@@ -1,0 +1,226 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fav-headers}
+
+%\usepackage[english=nohyphenation]{hyphsubst}
+
+%\DeclareOption*{%
+%  \PassOptionsToPackage{\CurrentOption}{babel}%
+%}
+
+\usepackage{xspace}
+
+\newcommand{\fav}{\textit{FreeAlgView}\xspace}
+\newcommand{\parref}[1]{\S\ref{#1}\xspace}
+\newcommand{\numref}[1]{\#\ref{#1}\xspace}
+
+\DeclareOption{english}{%
+  \PassOptionsToPackage{\CurrentOption}{babel}
+
+  \newcommand{\proj}{\textit{project}\xspace}
+  \newcommand{\chart}{\proj \textit{charter}\xspace}
+  \newcommand{\plan}{\proj \textit{plan}\xspace}
+
+  \newcommand{\favp}{\fav \proj}
+  \newcommand{\favc}{\fav \chart}
+  \newcommand{\favpl}{\fav \plan}
+
+  \newcommand{\secref}[1]{(see in \parref{#1})}
+}
+
+\DeclareOption{spanish}{%
+  \PassOptionsToPackage{\CurrentOption}{babel}
+
+  \newcommand{\proj}{\textit{proyecto}\xspace}
+  \newcommand{\chart}{\textit{acta constitucional del} \proj}
+  \newcommand{\plan}{\textit{plan del} \proj}
+
+  \newcommand{\favp}{\proj \fav}
+  \newcommand{\favc}{\chart \fav}
+  \newcommand{\favpl}{\plan \fav}
+
+  \newcommand{\secref}[1]{(véase en \refpar{#1})}
+}
+
+\ProcessOptions\relax
+
+\RequirePackage{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{nth}
+\usepackage{hyphenat}
+\usepackage{tikz}
+\usepackage{datenumber}
+\usepackage{calc}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+
+\usetikzlibrary{decorations.pathreplacing}
+
+\newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
+\newcommand{\pmbok}{PMBOK\rgtrmk GUIDE\xspace}
+
+%% Condition list environment
+\newcounter{box@number}
+
+\newenvironment{condlist}[2]{%
+
+  \setcounter{box@number}{0}
+
+  \begin{center}
+    \begin{minipage}{0.45\textwidth}
+      \begin{description}
+        \newcommand{\conditem}[1]{\item[\scriptsize{#1\thebox@number}]
+          \stepcounter{box@number}\scriptsize{\framebox{\parbox{#2}{##1}}}}
+}{%
+  \setcounter{box@number}{0}
+
+      \end{description}
+    \end{minipage}
+  \end{center}
+}
+
+%% Timeline environment
+\newcounter{init@date}
+\newcounter{end@date}
+
+\newcounter{event@date1}
+\newcounter{event@date2}
+
+\newcounter{length@interval}
+
+\newcounter{relative@event1}
+\newcounter{relative@event2}
+
+\newcounter{aux@counter0}
+\newcounter{aux@counter1}
+\newcounter{aux@counter2}
+
+\newcounter{node@idx}
+\setcounter{node@idx}{0}
+
+\newcommand{\add@event@item}[2]{%
+  \ifx\event@items\undefined
+  \gdef\event@items{}
+  \fi
+
+  \gappto\event@items{\item[\scriptsize{#1}] \scriptsize{#2}}
+}
+
+\newenvironment{timeline}[6]{%
+
+  \newcommand{\set@datenum}[4]{%
+    \setmydatenumber{##4}{##3}{##2}{##1}
+  }%
+
+  \newcommand{\set@length@interval}[2]{%
+    \setcounter{length@interval}{\value{##2} - \value{##1}}
+  }%
+
+  \newcommand{\set@relative@event}[2]{%
+    \setcounter{aux@counter1}{\value{##1} - \value{init@date}}
+    \setcounter{aux@counter2}{\value{end@date} - \value{init@date}}
+
+    \setcounter{##2}{(100 * \value{aux@counter1}) / \value{aux@counter2}}
+  }%
+
+  \set@datenum{#1}{#2}{#3}{init@date}
+  \set@datenum{#4}{#5}{#6}{end@date}
+
+  \set@length@interval{init@date}{end@date}
+
+  \newcommand{\event}[5]{%
+
+    \set@datenum{##1}{##2}{##3}{event@date1}
+    \set@relative@event{event@date1}{relative@event1}
+
+    \edef\id@entifier{H\thenode@idx}
+
+    \begingroup\edef\x{%
+      \endgroup\noexpand\add@event@item{\id@entifier}{\noexpand ##5}
+    }\x
+
+    \draw (1.4 * \value{relative@event1} / 10, 0) node(A\thenode@idx) [tick]
+          {##1.##2} node (B\thenode@idx) [label] {(\id@entifier) ##4};
+    \draw[blue] (B\thenode@idx.west) -- ++(0,-0.75);
+
+    \stepcounter{node@idx}
+  }%
+
+  \newcommand{\timeperiod}[7]{%
+    \set@datenum{##1}{##2}{##3}{event@date1}
+    \set@datenum{##4}{##5}{##6}{event@date2}
+
+    \set@relative@event{event@date1}{relative@event1}
+    \set@relative@event{event@date2}{relative@event2}
+
+    \set@length@interval{event@date1}{event@date2}
+
+    \draw [decorate, decoration = {brace, amplitude = 5, mirror}]
+    (1.4 * \value{relative@event1} / 10, -0.5) --
+    (1.4 * \value{relative@event2} / 10, -0.5)
+    node [black, midway, yshift = -18] {##7\\ (\thelength@interval{} days)};
+  }%
+
+  \begin{leftbar}
+    \begin{center}
+      \begin{tikzpicture}[scale=1, xshift = 100pt, every text node
+          part/.style = {align=center}]
+        \small \sf
+        \tikzset{label/.style = {draw = gray, ultra thin, rounded corners
+            = .25ex, fill = gray!20, text width = 4cm, text badly
+            centered, inner sep = .5ex, above = 2em, anchor = west, rotate
+            = 70, font = \tiny}}
+        \tikzset{tick/.style = {below = 3pt, font = \tiny}}
+        \tikzset{thinline/.style = {ultra thin}}
+
+        \draw (0,0)[->, -latex] -- (15,0);
+
+        \ifnumcomp{#3}{=}{#6}{
+        }{
+          \setcounter{aux@counter0}{#3 + 1}
+
+          \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
+          \set@relative@event{event@date1}{relative@event1}
+
+          \def\aux@length@tikz{1.4 * \value{relative@event1} / 10}
+
+          \draw [->] (0, 5) node [xshift = 12, yshift = 5] {#3}
+          -- (\aux@length@tikz, 5);
+
+          \draw [color = red!30] (\aux@length@tikz, 5.1) -- (\aux@length@tikz, -0.1);
+
+%          \foreach \x in { #3, ..., #6 } { .... }
+
+          \setcounter{aux@counter0}{#6}
+          \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
+          \set@relative@event{event@date1}{relative@event1}
+
+          \draw[<-] (1.4 * \value{relative@event1} / 10, 5) -- (15, 5)
+          node [xshift = -12, yshift = 5] {#6};
+        }
+}{%
+  \setcounter{node@idx}{0}
+
+    %  \end{tikzpicture}
+
+      \ifdefined\event@items
+      \node at (8, -3){
+          \begin{minipage}{0.9\textwidth}
+            \centering
+            \begin{multicols}{2}
+              \begin{description}
+                \event@items
+              \end{description}
+            \end{multicols}
+            \fi
+          \end{minipage}
+      };
+
+    \end{tikzpicture}
+    \end{center}
+  \end{leftbar}
+}
