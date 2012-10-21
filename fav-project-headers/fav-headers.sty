@@ -27,24 +27,25 @@
   \newcommand{\secref}[1]{(see in \parref{#1})}
 }
 
-\DeclareOption{spanish}{%
-  \PassOptionsToPackage{\CurrentOption}{babel}
+%% \DeclareOption{spanish}{%
+%%   \PassOptionsToPackage{\CurrentOption}{babel}
 
-  \newcommand{\proj}{\textit{proyecto}\xspace}
-  \newcommand{\chart}{\textit{acta constitucional del} \proj}
-  \newcommand{\plan}{\textit{plan del} \proj}
+%%   \newcommand{\proj}{\textit{proyecto}\xspace}
+%%   \newcommand{\chart}{\textit{acta constitucional del} \proj}
+%%   \newcommand{\plan}{\textit{plan del} \proj}
 
-  \newcommand{\favp}{\proj \fav}
-  \newcommand{\favc}{\chart \fav}
-  \newcommand{\favpl}{\plan \fav}
+%%   \newcommand{\favp}{\proj \fav}
+%%   \newcommand{\favc}{\chart \fav}
+%%   \newcommand{\favpl}{\plan \fav}
 
-  \newcommand{\secref}[1]{(véase en \refpar{#1})}
-}
+%%   \newcommand{\secref}[1]{(véase en \refpar{#1})}
+%% }
 
 \ProcessOptions\relax
 
 \RequirePackage{babel}
 
+%% Provided packages
 \usepackage[utf8]{inputenc}
 \usepackage{fullpage}
 \usepackage{nth}
@@ -56,10 +57,11 @@
 \usepackage{multicol}
 \usepackage{framed}
 \usepackage{float}
-\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
 
 \usetikzlibrary{decorations.pathreplacing}
 
+%% Alias
 \newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
 \newcommand{\pmbok}{PMBOK\rgtrmk GUIDE\xspace}
 
@@ -84,6 +86,8 @@
 }
 
 %% Timeline environment
+
+%% Private variables
 \newcounter{init@date}
 \newcounter{end@date}
 
@@ -102,6 +106,23 @@
 \newcounter{node@idx}
 \setcounter{node@idx}{0}
 
+%% This timeline environment is designed to draw a short-term
+%% timelines (a few months).
+%% This environment works drawing a timeline according to the
+%% events provided by the user, together with a description of this
+%% events. In each event command (\event{day}{month}{year}{short
+%% description}{long description}) the user specifies the date and a
+%% short description. This elements are drawn (with Tikz) in the
+%% timeline, while the long descriptions are accumulated in the
+%% event@item variable through the \add@event@item command.
+
+%% The events are enumerated by means of a sequence of
+%% identifiers (E0, E1, ...). This identifiers are used to link the
+%% events with their corresponding long description. Thus, long
+%% description are shown by means of a description environment:
+%% identifiers for the items, and longs description for the bodies
+%% of each item.
+
 \newcommand{\add@event@item}[2]{%
   \ifx\event@items\undefined
   \gdef\event@items{}
@@ -110,8 +131,13 @@
   \gappto\event@items{\item[\scriptsize{#1}] \scriptsize{#2}}
 }
 
+%% Timeline environment, the first three arguments are the initial
+%% date and the last three arguments the end date. Each date is
+%% specified in this order: day/month/year.
 \newenvironment{timeline}[6]{%
 
+  %% Private commands for calculating positions on events and
+  %% intervals.
   \newcommand{\set@datenum}[4]{%
     \setmydatenumber{##4}{##3}{##2}{##1}
   }%
@@ -127,22 +153,27 @@
     \setcounter{##2}{(100 * \value{aux@counter1}) / \value{aux@counter2}}
   }%
 
+  %% Calculation of whole interval.
   \set@datenum{#1}{#2}{#3}{init@date}
   \set@datenum{#4}{#5}{#6}{end@date}
-
   \set@length@interval{init@date}{end@date}
 
+  %% \event{day}{month}{year}{short-desc}{long-desc}
   \newcommand{\event}[5]{%
 
+    %% Calculate event position in the timeline.
     \set@datenum{##1}{##2}{##3}{event@date1}
     \set@relative@event{event@date1}{relative@event1}
 
-    \edef\id@entifier{H\thenode@idx}
+    %% Identifier.
+    \edef\id@entifier{E\thenode@idx}
 
+    %% Save item's long description.
     \begingroup\edef\x{%
       \endgroup\noexpand\add@event@item{\id@entifier}{\noexpand ##5}
     }\x
 
+    %% Draw short description and date.
     \draw (1.4 * \value{relative@event1} / 10, 0) node(A\thenode@idx) [tick]
           {##1.##2} node (B\thenode@idx) [label] {(\id@entifier) ##4};
     \draw[blue] (B\thenode@idx.west) -- ++(0,-0.75);
@@ -150,6 +181,11 @@
     \stepcounter{node@idx}
   }%
 
+  %% Draw a brace depicting a period of time. The first six arguments
+  %% are the interval (same syntax than first six timeline
+  %% arguments). The seventh argument is a short description of the
+  %% period of time. This command draw besides the length (in days) of the
+  %% period of time.
   \newcommand{\timeperiod}[7]{%
     \set@datenum{##1}{##2}{##3}{event@date1}
     \set@datenum{##4}{##5}{##6}{event@date2}
@@ -179,10 +215,14 @@
 
         \draw (0,0)[->, -latex] -- (15,0);
 
-        \ifnumcomp{#3}{=}{#6}{
-        }{
-          \setcounter{aux@counter0}{#3 + 1}
+        %% Draw lines showing years.
 
+        %% TODO: One-year timeline.
+        \ifnumcomp{#3}{=}{#6}{
+        }{ %% A few-years timeline.
+
+          %% From beginning to first year.
+          \setcounter{aux@counter0}{#3 + 1}
           \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
           \set@relative@event{event@date1}{relative@event1}
 
@@ -193,8 +233,10 @@
 
           \draw [color = red!30] (\aux@length@tikz, 5.1) -- (\aux@length@tikz, -0.1);
 
-%          \foreach \x in { #3, ..., #6 } { .... }
+          %% TODO: For intervening years.
+          % \foreach \x in { #3, ..., #6 } { .... }
 
+          %% From last year to the end.
           \setcounter{aux@counter0}{#6}
           \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
           \set@relative@event{event@date1}{relative@event1}
@@ -202,15 +244,12 @@
           \draw[<-] (1.4 * \value{relative@event1} / 10, 5) -- (15, 5)
           node [xshift = -12, yshift = 5] {#6};
         }
-}{%
+}{ % End of environment
   \setcounter{node@idx}{0}
 
-    %  \end{tikzpicture}
-
       \ifdefined\event@items
-      \node at (8, -3){
-          \begin{minipage}{0.9\textwidth}
-            \centering
+      \node at (7.5, -3) {
+          \begin{minipage}{0.95\textwidth}
             \begin{multicols}{2}
               \begin{description}
                 \event@items

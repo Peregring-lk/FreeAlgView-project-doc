@@ -1,8 +1,6 @@
 \documentclass[twocolumn]{article}
 
 \usepackage[english]{./fav-project-headers/fav-headers}
-\usepackage{lipsum}
-%\usepackage{stfloats}
 
 \title{\fav: \favc}
 \author{Aarón Bueno Villares \textit{$<$abv150ci@gmail.com$>$}}
@@ -11,7 +9,7 @@
 \begin{document}
 
 \twocolumn[
-\maketitle
+  \maketitle
 ]
 
 \tableofcontents
@@ -184,41 +182,6 @@ isn't enough design communication tools, as well it is neccesary to
 assemble a interested group of persons. A complete software community
 is an essential requirement for ensuring the software continuity.
 
-%% This project has as purpose to create an application which anyone can
-%% learn about algorithmics, that also implies to learn about computer
-%% models.
-
-%% \subsection{Preliminary provisos}
-%% The background of this project has the next preliminary provisos:
-
-%% \begin{description}
-%%   \item[A sole executor] Usually, real projects are carried out by
-%%     a project manager, analysts, designers, programmers,
-%%     testers, and so on. Looking at external agents who influence
-%%     in the project, also we have sponsors, customers or stakeholders.
-%%     In this project, this group of agents is
-%%     reduced to me and my tutor. It is important to evaluate the
-%%     implications over this project of this facts in terms of project
-%%     management issues.
-%%   \item[A learning application] \fav has learning
-%%     purposes. For this reason, it is important also to turn to the
-%%     educational software bibliography and to take its conclusions into
-%%     account to get a good learning software.
-%%   \item[A libre software] \fav will be libre. That implies
-%%     the project will generate a product opened to the community. To
-%%     achieve this purpose, a proper background must be insured to make
-%%     easier the participation of third parties. Otherwise, the
-%%     application could fail.
-%%   \item[A Final Degree Project] Lastly, this project takes place in
-%%     the context of a six-months Final Degree Project. This term
-%%     is closed to negotiation. That means the project duration doesn't
-%%     depend of its requirements, but its requirements must be fit to
-%%     the project duration. Moreover, in the absence of external agents
-%%     requesting for a concret application, this requirements must be
-%%     loosely choosen. Thus, it is neccesary to avoid too optimistic
-%%     goals for a six-months project.
-%% \end{description}
-
 \section{Purpose of this charter}
 \label{sec:purpose}
 The purpose of this charter is to formalize \favp as a real
@@ -258,11 +221,12 @@ central service of \fav is to show a graphical animation of the execution
 process of any algorithm, including whichever neccesary data structure
 for its execution.
 
-%% This is conceptualized by ``algorithm animation''
-%% clause. Also it is a learning-oriented application, that implies \fav
-%% will contain additional features that improves the algorithm
-%% learning process. Lastly, the application will be libre, concretly
-%% under the terms of GNU General Public License version 3.
+This project concerns only with building a first version of \fav, and
+not a complete application. That means, for example, \fav will not
+contain effective self-learning features. The project concern thus
+with building a product with a first set of features for getting a
+usefull tool and ensuring its continuity (that implies to develop a
+community).
 
 \fav is an acronym for ``Free Algorithm Viewer''\footnote{``Free'' and
 not ``libre'' was choosen for the name of the application for similarity
@@ -274,14 +238,12 @@ The sintetized \favp goal list. All words of this list
 have been thoroughly choosed for formalizing the project goals.
 
 \begin{condlist}{G}{5.4cm}
-\conditem{To build an
-      application improving algorithm learning by means of
-      graphical animations of the process execution of any
-      algorithm.}
-\conditem{To create its
-      software community and ensure its future survival.}
-%\item[\textbf{G3}] Project and product have to be transparent and
-%  well-documented in all senses.
+  \conditem{To build an
+    application improving algorithm learning by means of
+    graphical animations of the process execution of any
+    algorithm.}
+  \conditem{To create its
+    software community and ensure its future survival.}
 \end{condlist}
 
 \subsection{Project and product scope}
@@ -295,89 +257,75 @@ That means, for example, features for professional purposes is outside
 of the product, and thus its corresponding work is outside of the
 project.
 
-%\item[G2] The application is licensed under the terms of GNU General
-%\item[G3] The application has a simple and elegant graphic interface.
-%\item[G4] The application is independent on any real programming language.
-%\item[G5] The application is, at least, designed for internationalization
-%  and localization.
-
 \subsection{Requirements}
 
 \paragraph{Project requirements}
 
 \begin{condlist}{RPJ}{5.4cm}
-\conditem{The project has an iterative nature with at most four phases
-  to distribute the whole work.}
-\conditem{Each phase has its own project plan with a sort of objetives
-  to accomplish.}
-\conditem{The project is well-documented and all project documents and
-  information must be freely available on the Internet.}
-\conditem{The project must be executed following the recomendations of
-  the \pmbok.}
+  \conditem{The project has an iterative nature with at most four phases
+    to distribute the whole work.}
+  \conditem{Each phase has its own project plan with a sort of objetives
+    to accomplish.}
+  \conditem{The project must be executed following the recomendations of
+    the \pmbok.}
 \end{condlist}
 
 \paragraph{Product requirements}
 \begin{condlist}{RPD}{5.4cm}
-\conditem{The product has a public repository freely available on the
-  Internet.}
-\conditem{The product is object-oriented designed and implemented.}
-\conditem{The product source code is readable, has a unified style,
-  and is functional-decoupled and functional-cohesive.}
-\conditem{The product source code is well-documented.}
-\conditem{The product is designed for internationalization.}
+  \conditem{The product is object-oriented designed.}
+  \conditem{The product source code is readable, well-documented, has a
+    unified style, and is functional-decoupled and functional-cohesive.}
+  \conditem{The product is designed for internationalization.}
+  \conditem{The product processes algorithms written in a language
+    intended for human reading.}
+  \conditem{The product has an intuitive graphical user interface.}
 \end{condlist}
 
 \subsection{Constraints}
 \paragraph{Project constraints}
 \begin{condlist}{CPJ}{5.4cm}
-\conditem{Every document of this project is licensed under the
-  Creative Commons Attribution-ShareAlike License terms.}
-\conditem{The official language of this project is english.}
-\conditem{The project is five-months long (deadline on March 20,
-  2013).}
+  \conditem{Every document of this project is licensed under the
+    Creative Commons Attribution-ShareAlike License terms.}
+  \conditem{The project is five-months long (deadline on March 20,
+    2013).}
 \end{condlist}
 
 \paragraph{Product constraints}
 \begin{condlist}{CPD}{5.4cm}
-\conditem{This product is licensed under the GNU General Public
-  License terms.}
-\conditem{The documentation of this product is licensed under the GNU
-  General Public License terms.}
-\conditem{The product is implemented through the programming language
-  C++.}
-\conditem{The product is multiplataform.}
-\conditem{The product source code is written in english.}
-\conditem{The official language of the communication tools of the
-  product is english.}
+  \conditem{This product is licensed under the GNU General Public
+    License terms.}
+  \conditem{The documentation of this product is licensed under the GNU
+    General Public License terms.}
+  \conditem{The product is implemented through the programming language
+    C++.}
+  \conditem{The product is multiplataform.}
 \end{condlist}
 
 \subsection{Assumptions}
 \begin{condlist}{A}{5.4cm}
-\conditem{The english language is the best language to further the
-  project and product.}
-\conditem{Setting libre project and product is the best form to further
-  them.}
-\conditem{Following \pmbok recommendations is a good form to get
-  success in the project.}
+  \conditem{The english language is the best language to further the
+    project and product.}
+  \conditem{Setting libre project and product is the best form to further
+    them.}
+  \conditem{Following \pmbok recommendations is a good form to get
+    success in the project.}
 \end{condlist}
 
-%\subsection{Success criteria}
-
 \section{Deliverables}
+Outcomes of this project are as follows:
+
+\begin{description}
+  \item[\fav] The \fav software, that includes user and developer
+    manual, source code and source code documentation.
+  \item[\favp memory] A document describing the work realized. A
+    detailed summary of the whole project. This document is a
+    requirement for passing the ``Final Degree Project''
+    course\footnote{\textit{Proyectos Informáticos} in the University
+      of Cádiz (Spain), and \textit{Project Arbeit} in the Hochshule
+      für angewandte Wissenchaften Würzburg-Schweinfurt (Germany).}.
+\end{description}
 
 \section{Objetives and chronogram}
-A first group of concrete objetives and timelines will be described
-here as a means of further planification orientation. The project has
-(provisionally) three stages (iterations), each stage with a planning,
-execution and monitoring-and-controlling phases. The planning of each
-stage (the objectives to accomplish) depends on results of the
-previous stage. This project follow thus the spiral software
-development process model.
-
-Objectives of the first stage will be more concretly defined in this
-chronology, while the other stages will be only defined on its final
-result. Figure \numref{tl:pretl} depicts the preliminary chronogram and
-objetives.
 
 \begin{figure*}[th!]
     \caption{Preliminary chronology}
@@ -389,7 +337,7 @@ objetives.
       \timeperiod{21}{12}{2012}{19}{02}{2013}{Phase two}
       \timeperiod{20}{02}{2013}{20}{03}{2013}{Phase three}
 
-      %%
+      %% First stage
       \event{20}{10}{2012}{Project start-up}{\favc must be
         finished. This event launchs the project execution.}
 
@@ -411,14 +359,14 @@ objetives.
         control flow statements of algorithms working with any
         primitive type feature must be implemented.}
 
-      %%
+      %% Second stage
 
       \event{19}{02}{2013}{Customizing animations with primitive
         types}{Allowing users to customize animations of
         primitive types, its operations and control flow statements
         feature must be implemented.}
 
-      %%
+      %% Third stage
 
       \event{20}{03}{2013}{Data structures}{Allowing users to create
         their own data structures and customizing its animation
@@ -426,6 +374,24 @@ objetives.
     \end{timeline}
 
 \end{figure*}
+
+A first group of concrete objetives and timelines will be described
+here as a means of further planification orientation. Only functional
+features for the product will be described here. Objetives related to
+set up a software community are outside of this preliminary
+timeline.
+
+The project has (provisionally) three stages (iterations), each stage
+with a planning,
+execution and monitoring-and-controlling phases. The planning of each
+stage (the objectives to accomplish) depends on results of the
+previous stage. This project follow thus the spiral software
+development process model.
+
+Objectives of the first stage will be more concretly defined in this
+chronology, while the other stages will be only defined on its final
+result. Figure \numref{tl:pretl} depicts the preliminary chronogram and
+objetives.
 
 In short, the first stage takes up implementing the default animation
 without data structures, the second stage implementing animation
@@ -437,14 +403,40 @@ stage will be also a long-term stage due to the uncertainly of a first
 contact with the application.
 
 \section{Risks}
+Two higher-level risks have been identified:
 
+\begin{itemize}
+  \item Trying to create an impossible application: perhaps, it is
+    impossible or really heavy to customize any type of algorithm
+    animation in a comfortable and usefull manner.
+  \item Not getting an initial impact for spreading the application:
+    perhaps, meeting with an initial interested group of persons that
+    help to spread the application isn't achieve.
+\end{itemize}
 
 \section{Reporting framework}
-The evolution, successes, experiences and anything else interesant
-circumstance related to the project must be communicate through a
-public blog accesible on the Internet. Project charter, project plans,
-informs or anything else document related to the project must be
-upload to this blog, or if uploading in other internet infrastructure
-is decided, this must be communicated in the blog.
+The project development evolution will be well-documented and freely
+available on the Internet, by means of a blog, web page to source code
+documentation and public repositories. The different communication
+channel will be described as follows:
 
+\begin{description}
+  \item[\href{http://freealgview.blogspot.com}{\fav blog}] Blog to
+    inform about the project and product evolution, included technical
+    issues, problems and so on. In this blog will be linked the other
+    links decribed below.
+  \item[\href{http://peregring-lk.github.com/FreeAlgView}{\fav
+      documentation website}] Website to upload the \fav source code
+    documentation (Doxygen). This webpage will be of use as official
+    website of the product.
+  \item[\href{https://github.com/Peregring-lk/FreeAlgView}{\fav
+      repository}] Git repository of the \fav source code.
+  \item[\href{https://github.com/Peregring-lk/FreeAlgView-project-doc}{\favp
+  repository}]  Git repository of the \favp documents source code (the
+    documents of the project will be created in \LaTeX).
+\end{description}
+
+The project documents (\chart, \plan, etcétera) will be upload in
+the \fav documentation website but they will be directly linked from
+the blog.
 \end{document}
