@@ -57,6 +57,7 @@
 \usepackage{multicol}
 \usepackage{framed}
 \usepackage{float}
+\usepackage{graphicx}
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
 
 \usetikzlibrary{decorations.pathreplacing}
@@ -65,6 +66,19 @@
 \newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
 \newcommand{\pmbok}{PMBOK\rgtrmk GUIDE\xspace}
 
+\newcommand{\datelicense}[1]{\date{#1 \hspace*{2mm}
+  \raisebox{-0.7mm}{\href{http://creativecommons.org/licenses/by-sa/3.0}
+    {\includegraphics[scale=1.3]{images/by-sa_petit.png}}}}}
+
+\newcommand{\licensename}{\href{http://creativecommons.org/licenses/by-sa/3.0/}{Creative
+    Commons Attribution-ShareAlike 3.0}\xspace}
+
+% \licensesection{name}{year}
+\newcommand{\licensesection}[2]{
+  \section{License}
+  This document is \textcopyright #2 #1, under a \licensename license:
+  \url{http://creativecommons.org/licenses/by-sa/3.0/}.
+}
 %% Condition list environment
 \newcounter{box@number}
 
@@ -132,9 +146,10 @@
 }
 
 %% Timeline environment, the first three arguments are the initial
-%% date and the last three arguments the end date. Each date is
-%% specified in this order: day/month/year.
-\newenvironment{timeline}[6]{%
+%% date and the next three arguments the end date. Each date is
+%% specified in this order: day/month/year. The two last arguments are
+%% the caption and the label of the figure.
+\newenvironment{timeline}[8]{%
 
   %% Private commands for calculating positions on events and
   %% intervals.
@@ -201,49 +216,53 @@
     node [black, midway, yshift = -18] {##7\\ (\thelength@interval{} days)};
   }%
 
-  \begin{leftbar}
-    \begin{center}
-      \begin{tikzpicture}[scale=1, xshift = 100pt, every text node
-          part/.style = {align=center}]
-        \small \sf
-        \tikzset{label/.style = {draw = gray, ultra thin, rounded corners
-            = .25ex, fill = gray!20, text width = 4cm, text badly
-            centered, inner sep = .5ex, above = 2em, anchor = west, rotate
-            = 70, font = \tiny}}
-        \tikzset{tick/.style = {below = 3pt, font = \tiny}}
-        \tikzset{thinline/.style = {ultra thin}}
+  \begin{figure*}[th!]
+    \caption{#7}
+    \label{#8}
 
-        \draw (0,0)[->, -latex] -- (15,0);
+    \begin{leftbar}
+      \begin{center}
+        \begin{tikzpicture}[scale=1, xshift = 100pt, every text node
+            part/.style = {align=center}]
+          \small \sf
+          \tikzset{label/.style = {draw = gray, ultra thin, rounded corners
+              = .25ex, fill = gray!20, text width = 4cm, text badly
+              centered, inner sep = .5ex, above = 2em, anchor = west, rotate
+              = 70, font = \tiny}}
+          \tikzset{tick/.style = {below = 3pt, font = \tiny}}
+          \tikzset{thinline/.style = {ultra thin}}
 
-        %% Draw lines showing years.
+          \draw (0,0)[->, -latex] -- (15,0);
 
-        %% TODO: One-year timeline.
-        \ifnumcomp{#3}{=}{#6}{
-        }{ %% A few-years timeline.
+          %% Draw lines showing years.
 
-          %% From beginning to first year.
-          \setcounter{aux@counter0}{#3 + 1}
-          \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
-          \set@relative@event{event@date1}{relative@event1}
+          %% TODO: One-year timeline.
+          \ifnumcomp{#3}{=}{#6}{
+          }{ %% A few-years timeline.
 
-          \def\aux@length@tikz{1.4 * \value{relative@event1} / 10}
+            %% From beginning to first year.
+            \setcounter{aux@counter0}{#3 + 1}
+            \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
+            \set@relative@event{event@date1}{relative@event1}
 
-          \draw [->] (0, 5) node [xshift = 12, yshift = 5] {#3}
-          -- (\aux@length@tikz, 5);
+            \def\aux@length@tikz{1.4 * \value{relative@event1} / 10}
 
-          \draw [color = red!30] (\aux@length@tikz, 5.1) -- (\aux@length@tikz, -0.1);
+            \draw [->] (0, 5) node [xshift = 12, yshift = 5] {#3}
+            -- (\aux@length@tikz, 5);
 
-          %% TODO: For intervening years.
-          % \foreach \x in { #3, ..., #6 } { .... }
+            \draw [color = red!30] (\aux@length@tikz, 5.1) -- (\aux@length@tikz, -0.1);
 
-          %% From last year to the end.
-          \setcounter{aux@counter0}{#6}
-          \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
-          \set@relative@event{event@date1}{relative@event1}
+            %% TODO: For intervening years.
+            % \foreach \x in { #3, ..., #6 } { .... }
 
-          \draw[<-] (1.4 * \value{relative@event1} / 10, 5) -- (15, 5)
-          node [xshift = -12, yshift = 5] {#6};
-        }
+            %% From last year to the end.
+            \setcounter{aux@counter0}{#6}
+            \set@datenum{1}{1}{\value{aux@counter0}}{event@date1}
+            \set@relative@event{event@date1}{relative@event1}
+
+            \draw[<-] (1.4 * \value{relative@event1} / 10, 5) -- (15, 5)
+            node [xshift = -12, yshift = 5] {#6};
+          }
 }{ % End of environment
   \setcounter{node@idx}{0}
 
@@ -259,7 +278,8 @@
           \end{minipage}
       };
 
-    \end{tikzpicture}
-    \end{center}
-  \end{leftbar}
+        \end{tikzpicture}
+      \end{center}
+    \end{leftbar}
+  \end{figure*}
 }

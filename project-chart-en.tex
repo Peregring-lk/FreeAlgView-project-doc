@@ -4,7 +4,7 @@
 
 \title{\fav: \favc}
 \author{Aarón Bueno Villares \textit{$<$abv150ci@gmail.com$>$}}
-\date{\today}
+\datelicense{October 21, 2012}
 
 \begin{document}
 
@@ -27,6 +27,7 @@ application just is used and has continuity prospects.
 
 \section{Surroundings}
 \subsection{History of \fav}
+\label{subsec:history}
 About ten months ago, \fav was
 being developed during around two months, but in a pretty much
 informal manner, whose outcome was a very simple prototype.
@@ -56,18 +57,16 @@ popular science, and everything else regarding knowledge and its
 popularization. Previosly, in the V edition of the contest above
 cited, I made other application related
 to popular science. Specifically, an application about cladistic (a branch
-of biology), unfortunately without social impact, due to not get
-the necessary functionalities for having success in the final users,
-but with success in the contest itself, with two awards: absolute in
+of biology). I win two awards in that contest: absolute in
 the local contest of my university (Universidad de Cádiz) and a
-special mention on the national chapter
-of the contest, and with a lot of new experience and knowledge on my
-shoulders. With this new knowledge, above all related to visualization
-and graphical interfaces (OpenGL and Qt), it occurd to me casually, remembering
-the traditional sorting algorithm animations as that of quicksort or
-bubblesort (that somebody can found in youtube, for example), to apply
-it to my own field: the computer engineering/science. And so was as
-\fav idea was born.
+special mention on its national chapter
+of the contest, and with a lot of new experience and knowledge
+gained. With this new knowledge, above all related to visualization
+and graphical interfaces (OpenGL and Qt), it occurded to me casually,
+remembering the traditional sorting algorithm animations as that of
+quicksort or bubblesort (that somebody can found in youtube, for
+example), to apply it to my own field: the computer
+engineering/science. And so was as \fav idea was born.
 
 Now, in an Erasmus student capacity I will reset the project in a new
 formaler manner, and also I will enter it in the current VII
@@ -286,8 +285,8 @@ project.
 \begin{condlist}{CPJ}{5.4cm}
   \conditem{Every document of this project is licensed under the
     Creative Commons Attribution-ShareAlike License terms.}
-  \conditem{The project is five-months long (deadline on March 20,
-    2013).}
+  \conditem{The project is 148-days long (from \nth{21} October 2012
+    until \nth{20} March 2013).}
 \end{condlist}
 
 \paragraph{Product constraints}
@@ -327,53 +326,47 @@ Outcomes of this project are as follows:
 
 \section{Objetives and chronogram}
 
-\begin{figure*}[th!]
-    \caption{Preliminary chronology}
-    \label{tl:pretl}
+\begin{timeline}{21}{10}{2012}{20}{3}{2013}{Preliminary chronology}{tl:pretl}
 
-    \begin{timeline}{20}{10}{2012}{20}{3}{2013}
+  \timeperiod{21}{10}{2012}{20}{12}{2012}{Phase one}
+  \timeperiod{21}{12}{2012}{19}{02}{2013}{Phase two}
+  \timeperiod{20}{02}{2013}{20}{03}{2013}{Phase three}
 
-      \timeperiod{21}{10}{2012}{20}{12}{2012}{Phase one}
-      \timeperiod{21}{12}{2012}{19}{02}{2013}{Phase two}
-      \timeperiod{20}{02}{2013}{20}{03}{2013}{Phase three}
+  %% First stage
+  \event{21}{10}{2012}{Project start-up}{\favc launched. Beginning of
+    the project execution.}
 
-      %% First stage
-      \event{20}{10}{2012}{Project start-up}{\favc must be
-        finished. This event launchs the project execution.}
+  \event{5}{11}{2012}{Default animation of numeric values}{Default
+    animation of values of algorithms working only with
+    numbers feature must be implemented.}
 
-      \event{5}{11}{2012}{Default animation of numeric values}{Default
-        animation of values of algorithms working only with
-        numbers feature must be implemented.}
+  \event{29}{11}{2012}{Default animation of numeric
+    algorithms}{Default animation of values and operations of
+    algorithms working only with numbers feature must be
+    implemented.}
 
-      \event{29}{11}{2012}{Default animation of numeric
-        algorithms}{Default animation of values and operations of
-        algorithms working only with numbers feature must be
-        implemented.}
+  \event{7}{12}{2012}{Default animation with any primitive
+    type}{Default animation of values and operations of algorithms
+    working with any primitive type feature must be implemented.}
 
-      \event{7}{12}{2012}{Default animation with any primitive
-        type}{Default animation of values and operations of algorithms
-        working with any primitive type feature must be implemented.}
+  \event{20}{12}{2012}{Default animation of control flow
+    statements}{Default animation of values, operations and
+    control flow statements of algorithms working with any
+    primitive type feature must be implemented.}
 
-      \event{20}{12}{2012}{Default animation of control flow
-        statements}{Default animation of values, operations and
-        control flow statements of algorithms working with any
-        primitive type feature must be implemented.}
+  %% Second stage
 
-      %% Second stage
+  \event{19}{02}{2013}{Customizing animations with primitive
+    types}{Allowing users to customize animations of
+    primitive types, its operations and control flow statements
+    feature must be implemented.}
 
-      \event{19}{02}{2013}{Customizing animations with primitive
-        types}{Allowing users to customize animations of
-        primitive types, its operations and control flow statements
-        feature must be implemented.}
+  %% Third stage
 
-      %% Third stage
-
-      \event{20}{03}{2013}{Data structures}{Allowing users to create
-        their own data structures and customizing its animation
-        feature must be implemented.}
-    \end{timeline}
-
-\end{figure*}
+  \event{20}{03}{2013}{Data structures}{Allowing users to create
+    their own data structures and customizing its animation
+    feature must be implemented.}
+\end{timeline}
 
 A first group of concrete objetives and timelines will be described
 here as a means of further planification orientation. Only functional
@@ -417,14 +410,17 @@ Two higher-level risks have been identified:
 \section{Reporting framework}
 The project development evolution will be well-documented and freely
 available on the Internet, by means of a blog, web page to source code
-documentation and public repositories. The different communication
-channel will be described as follows:
+documentation and public repositories. The official language of the
+project, product and communication tools is english. The different
+communication channel will be described as follows:
 
 \begin{description}
   \item[\href{http://freealgview.blogspot.com}{\fav blog}] Blog to
     inform about the project and product evolution, included technical
     issues, problems and so on. In this blog will be linked the other
-    links decribed below.
+    links decribed below. This blog was the used blog in the first
+    development of \fav (see \parref{subsec:history}), and they still
+    are all available (in spanish).
   \item[\href{http://peregring-lk.github.com/FreeAlgView}{\fav
       documentation website}] Website to upload the \fav source code
     documentation (Doxygen). This webpage will be of use as official
@@ -439,4 +435,7 @@ channel will be described as follows:
 The project documents (\chart, \plan, etcétera) will be upload in
 the \fav documentation website but they will be directly linked from
 the blog.
+
+\licensesection{Aarón Bueno Villares}{2012}
+
 \end{document}
