@@ -6,6 +6,8 @@
 \author{Aarón Bueno Villares \textit{$<$abv150ci@gmail.com$>$}}
 \datelicense{October 21, 2012}
 
+\setcounter{tocdepth}{2}
+
 \begin{document}
 
 \twocolumn[
@@ -21,8 +23,8 @@ This document has two main purposes:
 
 \begin{itemize}
 \item To establish the planning to the whole project (see
-  \parref{part:st0-plan}), that means, the common plans to all stages
-  of the project (let us call it stage 0 plan).
+  \parref{part:st0-plan}), that means, the work framework for all
+  stages of the project (let us call it stage 0 plan).
 \item To establish the planning of the current stage 1 (see
   \parref{part:st1-plan}).
 \end{itemize}
@@ -32,28 +34,30 @@ This planning has been guided by the next list of documents:
 
 \begin{description}
   \item[\pmbok] This guide is the starting point to planning the
-    whole project. It is used here as a biligraphy about project
+    whole project. It is used here as a bibliography about project
     management and general guidance about the managerial work to carry
     out.
   \item[IEEE Std 1074-1997] This standard is used as a information
     source to find the activities to carry out in this project.
-  \item[IEEE Std 1058-1998] This standard is used as a design model
-    to derivate this document.
 \end{description}
 
-\subsection{Evolution of the plan}
-If there are changes in the project plan, it must to add a history
-table at the beginning of this document (just below the
-title). Otherwise, this table isn't necessary.
+This project and its plans will not strictly adhered to these
+documents. These documents will be used only as general guidance and
+source of knowledge.
 
-It must to add in this table a row for the first version and for each
-update. It must to inform in this table about the new version number
-and a short description about the changes made. The format of the
-version number must be $x.y$, where $x$ denotes version and $y$
-subversion. There are no specifications about when it has to made a
-change of version or subversion. This depends on the impact of the
-changes made. The top row must be the latest updating, and the bottom
-row the initial version, in chronological order.
+%% \subsection{Evolution of the plan}
+%% If there are changes in the project plan, it must to add a history
+%% table at the beginning of this document (just below the
+%% title). Otherwise, that table isn't necessary.
+
+%% It must to add in this table a row for the first version and for each
+%% update. It must to inform in this table about the new version number
+%% and a short description about the changes made. The format of the
+%% version number must be $x.y$, where $x$ denotes version and $y$
+%% subversion. There are no specifications about when it has to made a
+%% change of version or subversion. This depends on the impact of the
+%% changes made. The top row must be the latest updating, and the bottom
+%% row the initial version, in chronological order.
 
 \part{\favpl}
 \label{part:st0-plan}
@@ -62,48 +66,285 @@ row the initial version, in chronological order.
 \section{Overview}
 \subsection{Purpose}
 The purpose of this project plan is to establish the planning of the
-work to carry out during the whole project. That means, to enumerate
-the common activities to perform throughout all stages of the project,
-to design a schedule model for any stage (which must be used in each
-stage to schedule it fully, adding the stage's specific work), and to
-define plans to achieve succesfully the goals described in the \favp.
+work to carry out during the whole project. That means, to establish
+the work to carry out throughout all stages of the project and plans
+on how to carry out this work to achieve succesfully the goals
+described in the \favp.
 
 \subsection{Dependences}
 This document constitute a extension of the \favc. The clauses
 described here depends thus on the clauses described in the \favc.
 
-%% Section managerial process plans
-\section{Managerial process plans}
-\subsection{Planning}
-\subsubsection{Estimation plan}
+\subsection{Planning method}
+The method used to plan the project is as follows:
 
-\subsection{Executing}
-\subsubsection{Work activities}
-\subsubsection{Schedule allocation}
-\subsubsection{Resource allocation}
+\begin{description}
+\item[Identifing risks] To identify all situations which could make the
+  project fails.
+\item[Identifing at-risk scenes] To identify causes producing these risks.
+\item[Identifing requirements] To identify project and product
+  requirements to make them resistant to this at-risks scenes.
+\item[Designing ``aid plans''] To design plans for
+  requirements invisible to the product, that means, those which isn't
+  built \textit{inside} the product, but only creating a quality of
+  it. These type of requirements require an invisible continuous
+  effort to carry out throughout the project.
+\end{description}
 
-\subsection{Control and monitoring}
-\subsubsection{Schedule control plan}
-\subsubsection{Reporting plan}
-\subsubsection{Verification and validation plan}
+Any plans will be just now specified, while other plans will be
+delegated to later stages of the project, when they are more
+meaningful. It is necessary thus to stablish first a dependence
+diagram between the activities to detect when it is necessary
+develop those plans.
 
-\subsection{Risk management plan}
+\subsection{Rol of the stage plans}
+This project plan defines fundamentally the common work to realice
+during all stages of the project. These work have in common that they
+relate all to work to non-functional purposes, that means, they are
+works to ensure \textit{quality}, but not to develop the functional
+requirements of the product.
 
-\subsection{Closeout plan}
+Thus, the rol of the stage plans is define the work to carry out to
+achieve the pure functional requirements specified in the \favc, and
+the work to accomplish in a stage is the sum of the functional work of
+the stage and the quality work specified in this project plan.
 
-% Section technical process plans
-\section{Technical process plans}
-\subsection{Process model}
-\subsection{Methods, tools and technics}
-\subsubsection{Programming style}
-\subsection{Infraestructure plan}
-\subsection{Deployment plan}
+Exceptions are the plans delegated to later project stages, that
+are works with quality purposes but defined in concrete stage
+plans. Also it is possible in concrete stages to make changes or
+extensions in previosly defined plans if this is neccesary.
+
+%\subsection{Changes respect to project managemet}
+
+\section{Quality requirements}
+\subsection{Risk identification}
+The identified risks, and its causes, in order of priority and dependency
+each other, are the following:
+
+\begin{labelist}
+\item The project fails.
+  \begin{labelist}
+    \item Defined objetives not accomplish due to lack of time.
+    \item Loss of time due to code rewritting by removal of
+      libraries.
+  \end{labelist}
+\item The product fails.
+  \begin{labelist}
+    \item Nobody knows the product.
+    \item The product doesn't attract new users or developers.
+      \begin{labelist}
+        \item The information about the product isn't well-defined or
+          inaccessible.
+        \item Newcommers can't get past the initial obstacle of
+          unfamiliarity.
+        \item The product doesn't work in the most common plataforms.
+        \item The product installation isn't easy.
+        \item The product use isn't suitable for newcommers.
+        \item The product doesn't work properly.
+        \item Developers can't colaborate easily.
+      \end{labelist}
+    \item Users stop using the product.
+      \begin{labelist}
+        \item The product doesn't progress.
+      \end{labelist}
+    \item Developers stop colaborating.
+      \begin{labelist}
+        \item It is difficult increment the product.
+        \item The develop is incoherent.
+        \item Lack of new needs, ideas or error reports.
+        \item There isn't continuous motivation.
+      \end{labelist}
+  \end{labelist}
+\item Actions to avoid project or product failings, fail.
+  \begin{labelist}
+    \item The proposed actions aren't correct solutions for this
+      problems.
+  \end{labelist}
+\end{labelist}
+
+\subsection{Requirements}
+Only a group of risks are considered in this plan. These risks are
+rejected because there is no reason to consider them now. Remainders
+risks must be controlled in other stages. Some risks are related or
+depend each other, and can be avoided with a only requirement or
+plan.
+
+The risks rejected here are the followings: \labelid{B.1},
+\labelid{B.2.\{1, 2, 4, 7\}}, \labelid{B.3}, \labelid{B.4.\{2, 3,
+  4\}}.
+
+\subsubsection{Requirements for the product}
+\label{sssec:prodreq}
+
+\begin{labeledpars}{ProdReq}
+  \labeledpar{Documentation for developers} The product source code must be
+  written in accordance with readability criteria. The product must
+  have a development manual and a code documentation page, both
+  freely-available on the Internet.
+  \labeledpar{Design} The product design must be designed in
+  accordance with extensibility criteria. The product must be
+  multiplataform.
+  \labeledpar{GUI} To design an interface in accordance with usability
+  criteria. The GUI must be designed for internationalization.
+\end{labeledpars}
+
+\subsubsection{Requirements for the project}
+\begin{labeledpars}{ProjReq}
+
+  \labeledpar{Development plan} The project must have a development
+  plan in order to estimate and control better the progress and the
+  required time of the project.
+
+  \labeledpar{Importation plan} The project must have an importation
+  plan in order to ensure the adjustment of libraries to the product
+  needs.
+
+  \labeledpar{Investigation plan} The project must have an
+  investigations plan in order to ensure the quality of designs and
+  decisions made.
+
+  \labeledpar{Monitoring plan} The project must have a monitoring plan
+  in order to improve time estimations.
+
+  \labeledpar{Testing plan} The project must have a testing plan
+  in order to ensure the quality of design and implementation of the
+  product.
+
+  \labeledpar{Integrated project plan} The project must have an integrated
+  project plan in order to know better and estimate the total work to
+  carry out.
+\end{labeledpars}
+
+\subsection{Risks-requirements matrix}
+\label{ssec:rr-matrix}
+
+In this place a matrix relating risks and requirements is shown. The
+purpose of this traceability matrix is to detect the source risk of
+each requirement. Some risks could need more than one requirement to
+avoid it. Similarly, some requirements could concern to more than one
+risk. Table \numref{tab:rr-matrix} shows this traceability matrix.
+
+\begin{table*}[th!]
+  \caption{Risk-requirements traceability matrix}
+  \label{tab:rr-matrix}
+  \centering
+  \begin{tabular}{|c||c|c|c|c|c|c|c|}
+    \hline
+    & \mlabelid{A.1} & \mlabelid{A.2} & \mlabelid{B.2.3} &
+    \mlabelid{B.2.5} & \mlabelid{B.2.6} & \mlabelid{B.4.1} &
+    \mlabelid{C.1} \\
+    \hline
+    \mlabelid{ProdReq1} & & & & & & \checkmark &\\
+    \hline
+    \mlabelid{ProdReq2} & & & \checkmark & & & \checkmark &\\
+    \hline
+    \mlabelid{ProdReq3} & & & & \checkmark & & &\\
+    \hline
+    \mlabelid{ProjReq1} & \checkmark & & & & & &\\
+    \hline
+    \mlabelid{ProjReq2} & & \checkmark & & & & &\\
+    \hline
+    \mlabelid{ProjReq3} & & & & & & & \checkmark\\
+    \hline
+    \mlabelid{ProjReq4} & \checkmark & & & & & &\\
+    \hline
+    \mlabelid{ProjReq5} & & & & \checkmark & & &\\
+    \hline
+    \mlabelid{ProjReq6} & \checkmark & & & & & &\\
+    \hline
+  \end{tabular}
+\end{table*}
+
+\section{Aid plans}
+\label{sec:aid-plans}
+
+\subsection{Development plan}
+\label{ssec:development-plan}
+
+For simplifying the work to accomplish and improving its measurement,
+a development plan and a monitoring plan are established. This clause
+describes only the development plan.
+
+\subsubsection{Stages definition}
+The whole work must be divided in stages. Each stage generates a
+subset of the \fav software features and a subset of the \fav
+community features. The last stage generates a final version with all
+of its features and satisfying all requirements and constrains defined
+in the \favc and in \parref{sssec:prodreq}.
+
+Each stage must identify the features to accomplish and the
+requirements to satisfy, and to estimate the neccesary time to carry
+out this work.
+
+\subsubsection{Software release numbering system}
+\label{sssec:release}
+The actual software state at the end of the stage $x$ must be release
+with the software version number $0.x$. For example, at the end of the first
+stage, the version number is $0.1$, and at the end of the second
+stage, $0.2$. However, the last stage produces the \fav version
+$1.0$.
+
+\subsubsection{Documentation}
+Each stage must be documented in three forms; other plans could add new
+clauses:
+
+\paragraph{Stage plans}
+Each stage must have its own stage plan. In this stage plan the
+selected features to accomplish and the requirements to satisfy must
+be enumerated. If new risks are considered, these must be specified in
+the project plan and the risks-requirements matrix
+(\parref{ssec:rr-matrix}) must be properly extended and
+showed. Finally, the stage timeline must be depicted after estimating
+the work time.
+
+\paragraph{Blog}
+In the project blog, each stage plan must be uploaded and, at the end
+of each stage, each release of a new version (\parref{sssec:release})
+must be announced, with the description of achievements and video
+samples showing the software running.
+
+\paragraph{Software source code repository}
+In the software source code repository, a new tag registering the new
+version must be inserted. This tag must be well-described with
+information about its actual features and limitations.
+
+\subsection{Importation plan}
+\label{ssec:importation-plan}
+This importation plan contains the requirements and policies about the
+use of imported software, mainly libraries. This plan is related to
+the investigation plan (\parref{ssec:investigation-plan}) and the
+testing plan (\parref{ssec:testing-plan}).
+
+\subsubsection{Imported software requirements}
+All imported software must be libre under GPL-compatible
+licenses and multiplataform. All imported software must have an active
+development and a good documentation. All imported software must be
+selected in order to facilitate the development, and they must be thus
+well studied before importing it in the \fav development.
+
+\subsubsection{Imported software testing}
+In order to avoid selecting software which can later delay the
+development, a investigation activity must be carried out each time
+that a new library is needed to solve a new implementation problem.
+
+\subsection{Investigation plan}
+\label{ssec:investigation-plan}
+
+\subsection{Monitoring plan}
+\label{ssec:monitoring-plan}
+
+\subsection{Testing plan}
+\label{ssec:testing-plan}
+
+\section{Integrated project plan}
+\label{ssec:integrated-plan}
+
+\section{Technical issues}
+\subsection{Libraries}
+\subsection{Tools}
 
 \part{\favpl stage 1}
 \label{part:st1-plan}
-
-%% Section introduction
-\section{Introduction}
 
 \subsection{Purpose}
 The purpose of this document is plan the first stage of the
@@ -130,14 +371,84 @@ This stage 1 has the next deliverables:
   \fav and its design.
 \end{description}
 
-\section{Managerial process plans}
-\subsection{Executing}
-\subsubsection{Work activities}
-\subsubsection{Schedule allocation}
-\subsubsection{Resource allocation}
+\subsection{Selected requirements}
+\subsection{Historial time records}
 
-\section{Technical process plans}
-\subsection{Process model}
-\subsection{Methods, tools and technics}
+\section{Work detach}
+\subsection{WBS}
+\subsection{Sequence activities}
+\section{Integrated stage plan}
+
+\section{Summary}
+%% %% Section SLCP
+%% \section{Project life cycle}
+
+%% %% Section managerial process plans
+%% \section{Managerial plans}
+%% \subsection{Planning}
+%% \subsubsection{Estimation plan}
+
+%% \subsection{Executing}
+%% \subsubsection{Work activities}
+%% \subsubsection{Schedule allocation}
+%% \subsubsection{Resource allocation}
+
+%% \subsection{Control and monitoring}
+%% \subsubsection{Schedule control plan}
+%% \subsubsection{Reporting plan}
+%% \subsubsection{Verification and validation plan}
+
+%% \subsection{Risk management plan}
+
+%% \subsection{Closeout plan}
+
+%% % Section technical process plans
+%% \section{Technical plans}
+%% \subsection{Process model}
+%% \subsection{Methods, tools and technics}
+%% \subsubsection{Programming style}
+%% \subsection{Infraestructure plan}
+%% \subsection{Deployment plan}
+
+%% \part{\favpl stage 1}
+%% \label{part:st1-plan}
+
+%% %% Section introduction
+%% \section{Introduction}
+
+%% \subsection{Purpose}
+%% The purpose of this document is plan the first stage of the
+%% \favp.
+
+%% \subsection{Dependences}
+%% This document constitute a extension of the \favpl. The clauses
+%% described here depends thus on the clauses described in the \favpl
+%% (see \parref{part:st0-plan}).
+
+%% \subsection{Deliverables}
+%% This stage 1 has the next deliverables:
+
+%% \begin{description}
+%% \item[\fav v0.1] To build the \fav version 0.1, that includes to design a
+%%   \fav programming language which manages algorithm working with
+%%   numeric data types, its operations, functions and recursion and
+%%   control flow structures (sequence, iteration and selection
+%%   structures); and to design a default animation for each of this
+%%   language features.
+%% \item[Documentation] To record this stage and to publish on the
+%%   Internet this information, that includes the registered time for
+%%   each realized activity, the features of the achieved version of the
+%%   \fav and its design.
+%% \end{description}
+
+%% \section{Managerial process plans}
+%% \subsection{Executing}
+%% \subsubsection{Work activities}
+%% \subsubsection{Schedule allocation}
+%% \subsubsection{Resource allocation}
+
+%% \section{Technical process plans}
+%% \subsection{Process model}
+%% \subsection{Methods, tools and technics}
 
 \end{document}

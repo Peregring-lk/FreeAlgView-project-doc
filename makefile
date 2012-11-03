@@ -1,8 +1,7 @@
 CHART-EN = project-charter-en.tex
 PLAN-ST1-EN = project-plan-st1-en.tex
 
-PDF = pdflatex
-LATEX = latex
+PDF = pdflatex -file-line-error
 
 charter-en:
 	$(PDF) $(CHART-EN) && $(PDF) $(CHART-EN)

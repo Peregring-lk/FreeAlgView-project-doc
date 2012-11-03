@@ -56,8 +56,11 @@
 \usepackage{etoolbox}
 \usepackage{multicol}
 \usepackage{framed}
+\usepackage{amssymb}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tocvsec2}
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
 
 \usetikzlibrary{decorations.pathreplacing}
@@ -79,6 +82,7 @@
   This document is \textcopyright #2 #1, under a \licensename:
   \url{http://creativecommons.org/licenses/by-sa/3.0/}.
 }
+
 %% Condition list environment
 \newcounter{box@number}
 
@@ -98,6 +102,30 @@
     \end{minipage}
   \end{center}
 }
+
+%% Label enumerate environment
+\newlist{labelist}{enumerate}{5}
+
+\setlist[labelist,1]{label*=\small{\textbf{[\Alph*]}}}
+\setlist[labelist,2]{label=\small{\textbf{[\Alph{labelisti}.\arabic{labelistii}]}}}
+\setlist[labelist,3]{label=\small{\textbf{[\Alph{labelisti}.\arabic{labelistii}.\arabic{labelistiii}]}}}
+
+%% Labeled paragraphs.
+\newcounter{paragraph@number}
+
+\newenvironment{labeledpars}[1]{%
+
+  \setcounter{paragraph@number}{0}
+
+  \newcommand{\labeledpar}[1]{\stepcounter{paragraph@number}
+    \paragraph{\small{[#1\theparagraph@number]} ##1}}
+}{%
+  \setcounter{paragraph@number}{0}
+}
+
+%% Label identifier
+\newcommand{\labelid}[1]{\small{\textbf{[#1]}}}
+\newcommand{\mlabelid}[1]{\tiny{\textbf{[#1]}}}
 
 %% Timeline environment
 
