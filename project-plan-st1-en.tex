@@ -306,7 +306,13 @@ samples showing the software running.
 \paragraph{Software source code repository}
 In the software source code repository, a new tag registering the new
 version must be inserted. This tag must be well-described with
-information about its actual features and limitations.
+information about its actual features and limitations. Within each
+stage, changes made on the code must be commited together with good
+descriptions in order to record them adequatelly. These commits must
+be of use to mark easily borders between groups of conceptually
+different changes (not commits with changes realized for
+very different purposes), so that a short and precise description
+summarize clearly the nature of the commit.
 
 \subsection{Importation plan}
 \label{ssec:importation-plan}
@@ -325,16 +331,42 @@ well studied before importing it in the \fav development.
 \subsubsection{Imported software testing}
 In order to avoid selecting software which can later delay the
 development, a investigation activity must be carried out each time
-that a new library is needed to solve a new implementation problem.
+that a new library is needed to solve a new implementation problem. Qt
+libraries are free of this testing process, due to the Qt library
+usage is imposed in the \favc.
+
+This testing process must include the creation of ``Hello
+world'' programs\footnote{Short source code files with a minimal
+  example of use.} using that library, and next, more extense programs
+with examples of use of all features required for this library, in
+order to testing the user-friendliness of the library (that includes if a
+good documentation is available) and adequacy of the library features
+to the required needs.
+
+\subsubsection{Documentation of software importation}
+\label{sssec:doc-importation-plan}
+For each tested library a entry in the \fav blog must be added in
+order to document the realized work and to record the usage
+experience with this library, as well as to inform readers about the
+library and the pros and cons of its choice.
 
 \subsection{Investigation plan}
 \label{ssec:investigation-plan}
+Each time an important new decision must be taken to satisfy a
+requirement (for example, in order to design a GUI with usability
+features or to implement an algorithm to solve a difficult concrete problem), an
+investigation must be carried out to ensure the quality of the
+decisions made. As with the importation plan
+(\parref{sssec:doc-importation-plan}), each investigation must be
+documented and with the same conditions.
 
 \subsection{Monitoring plan}
 \label{ssec:monitoring-plan}
 
+
 \subsection{Testing plan}
 \label{ssec:testing-plan}
+
 
 \section{Integrated project plan}
 \label{ssec:integrated-plan}
