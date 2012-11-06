@@ -286,7 +286,8 @@ $1.0$.
 
 \subsubsection{Documentation}
 Each stage must be documented in three forms; other plans could add new
-clauses:
+clauses
+(\parref{sssec:doc-importation-plan,ssec:investigation-plan,ssec:monitoring-plan}):
 
 \paragraph{Stage plans}
 Each stage must have its own stage plan. In this stage plan the
@@ -354,19 +355,33 @@ library and the pros and cons of its choice.
 \label{ssec:investigation-plan}
 Each time an important new decision must be taken to satisfy a
 requirement (for example, in order to design a GUI with usability
-features or to implement an algorithm to solve a difficult concrete problem), an
-investigation must be carried out to ensure the quality of the
-decisions made. As with the importation plan
+features or to implement an algorithm to solve a difficult concrete
+problem), an investigation must be carried out to ensure the quality
+of the decisions made. As with the importation plan
 (\parref{sssec:doc-importation-plan}), each investigation must be
 documented and with the same conditions.
 
 \subsection{Monitoring plan}
 \label{ssec:monitoring-plan}
-
+The time taken for each project activity must be measure in order to
+have a better control about the project progress and to improve the
+estimations in future stages. Each measurement must be registered in
+any form. At the end of each stage, a summary about the activities
+performed in the stage and the time taken in each activity must be
+posted to the \favp blog.
 
 \subsection{Testing plan}
 \label{ssec:testing-plan}
-
+Each stage must have its own testing activity, specially at the end of
+the stage. These tests must be carry out in software in order to
+ensure the quality of the implementation. These tests must be achieved
+just for functional and performance testing purposes:
+functional requirements, stress, endurance,
+robutness, reliability, regression, volume and so on. Other
+non-functional tests as extensibility, usability or escalability tests
+aren't obligatory to testing, because they are properties hard to test
+and the investigation plan (\parref{ssec:investigation-plan}) is the
+means to get this properties in the design phase.
 
 \section{Integrated project plan}
 \label{ssec:integrated-plan}

@@ -8,9 +8,24 @@
 %}
 
 \usepackage{xspace}
+\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
+\usepackage{cleveref}
+
+\newcommand{\crefnames}[3]{%
+  \@for\next:=#1\do{%
+    \expandafter\crefformat\expandafter{\next}{#2##2##1##3}
+    \expandafter\crefmultiformat\expandafter{\next}{#3##2##1##3}{and~##2##1##3}{,
+      ##2##1##3}{, and~##2##1##3}
+  }%
+}
+
+\setcounter{secnumdepth}{100}
+
+\crefnames{part,section}{\S}{\S\S}
+\crefnames{paragraph}{\P}{\P\P}
 
 \newcommand{\fav}{\textit{FreeAlgView}\xspace}
-\newcommand{\parref}[1]{\S\ref{#1}\xspace}
+\newcommand{\parref}[1]{\cref{#1}}
 \newcommand{\numref}[1]{\#\ref{#1}\xspace}
 
 \DeclareOption{english}{%
@@ -61,7 +76,6 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{tocvsec2}
-\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
 
 \usetikzlibrary{decorations.pathreplacing}
 
