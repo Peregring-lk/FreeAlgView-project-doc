@@ -76,6 +76,7 @@ This document constitute a extension of the \favc. The clauses
 described here depends thus on the clauses described in the \favc.
 
 \subsection{Planning method}
+\label{ssec:planning-method}
 The method used to plan the project is as follows:
 
 \begin{description}
@@ -181,11 +182,12 @@ The risks rejected here are the followings: \labelid{B.1},
   written in accordance with readability criteria. The product must
   have a development manual and a code documentation page, both
   freely-available on the Internet.
-  \labeledpar{Design} The product design must be designed in
+  \labeledpar{Design} The product source code must be designed in
   accordance with extensibility criteria. The product must be
   multiplataform.
-  \labeledpar{GUI} To design an interface in accordance with usability
-  criteria. The GUI must be designed for internationalization.
+  \labeledpar{GUI} To design an interface in accordance with
+  usability criteria. The GUI must be designed for
+  internationalization.
 \end{labeledpars}
 
 \subsubsection{Requirements for the project}
@@ -266,15 +268,18 @@ a development plan and a monitoring plan are established. This clause
 describes only the development plan.
 
 \subsubsection{Stages definition}
+\label{sssec:stages-definition}
 The whole work must be divided in stages. Each stage generates a
 subset of the \fav software features and a subset of the \fav
 community features. The last stage generates a final version with all
 of its features and satisfying all requirements and constrains defined
 in the \favc and in \parref{sssec:prodreq}.
 
-Each stage must identify the features to accomplish and the
-requirements to satisfy, and to estimate the neccesary time to carry
-out this work.
+Each stage must identify the features to accomplish, the new risk to
+consider, the requirements to satisfy, and to estimate the neccesary
+time to carry out this work. Identification of new risks could imply
+an subsequent investigation in order to identify requirements avoiding
+these risks.
 
 \subsubsection{Software release numbering system}
 \label{sssec:release}
@@ -287,7 +292,7 @@ $1.0$.
 \subsubsection{Documentation}
 Each stage must be documented in three forms; other plans could add new
 clauses
-(\parref{sssec:doc-importation-plan,ssec:investigation-plan,ssec:monitoring-plan}):
+(\parref{sssec:doc-importation-plan,ssec:investigation-plan,ssec:monitoring-plan,ssec:testing-plan}):
 
 \paragraph{Stage plans}
 Each stage must have its own stage plan. In this stage plan the
@@ -330,6 +335,7 @@ selected in order to facilitate the development, and they must be thus
 well studied before importing it in the \fav development.
 
 \subsubsection{Imported software testing}
+\label{sssec:imported-software}
 In order to avoid selecting software which can later delay the
 development, a investigation activity must be carried out each time
 that a new library is needed to solve a new implementation problem. Qt
@@ -344,6 +350,12 @@ order to testing the user-friendliness of the library (that includes if a
 good documentation is available) and adequacy of the library features
 to the required needs.
 
+As described in the investigation plan
+(\parref{ssec:investigation-plan}), each investigation must be
+documented to record the usage experience with this library, as well
+as to inform readers about the library and the pros and cons of its
+choice.
+
 \subsubsection{Documentation of software importation}
 \label{sssec:doc-importation-plan}
 For each tested library a entry in the \fav blog must be added in
@@ -357,9 +369,12 @@ Each time an important new decision must be taken to satisfy a
 requirement (for example, in order to design a GUI with usability
 features or to implement an algorithm to solve a difficult concrete
 problem), an investigation must be carried out to ensure the quality
-of the decisions made. As with the importation plan
-(\parref{sssec:doc-importation-plan}), each investigation must be
-documented and with the same conditions.
+of the decisions made. For each investigation a entry in the \fav blog
+must be added in order to document the realized work and to inform
+readers about adquired knowledge and the decisions made.
+
+Other investigations are described in
+\parref{sssec:stages-definition,sssec:imported-software}.
 
 \subsection{Monitoring plan}
 \label{ssec:monitoring-plan}
@@ -383,8 +398,118 @@ aren't obligatory to testing, because they are properties hard to test
 and the investigation plan (\parref{ssec:investigation-plan}) is the
 means to get this properties in the design phase.
 
-\section{Integrated project plan}
-\label{ssec:integrated-plan}
+In order to perform good tests a previous investigation, and
+optionally a formal design, must be done, except trivial tests. The
+conclusion of this investigations must be documented in the \fav
+blog.
+
+\section{Integrated project activities}
+\label{sec:integrated-activities}
+In this section will be defined a integrated list of activities to
+carry out during the project based on the plans described above
+(\parref{sec:aid-plans}) and the resultant project/development life
+cycle.
+
+\favp is divided in stages (4 as maximum) as described in the
+\favc. Each stage has two phases: a planning and a execution
+phase. Each phase has a group of activities to
+accomplish. This activities are extrated from the aid plans
+(\parref{sec:aid-plans}) and descomposed in tasks. A section is
+dedicated for each identified activity as follows. Only activities
+must be considered to document plannings/chronograms in stage plans.
+
+\subsection{Planning phase activities}
+\label{ssec:planning-phase}
+This phase has the next activities:
+
+\begin{itemize}
+\item Identify requirements (\parref{sssec:identify-requirements}).
+\item Estimate time (\parref{sssec:estimate-time}).
+\item Edit stage plan (\parref{sssec:edit-stage-plan}).
+\end{itemize}
+
+\subsubsection{Identify requirements}
+\label{sssec:identify-requirements}
+This activity involves to establish the requirements (concrete work)
+to accomplish/satisfy throughout the stage. The following tasks
+are identified (described in its natural order):
+
+\begin{description}
+  \item[Select new risks] To select new risks (risks not considered
+    before) to deal with throughout the stage.
+  \item[Investigate solutions] In case of selecting new risks, to
+    investigate its causes and its solutions in order to choose good
+    solutions to these risks.
+  \item[Select requirements] To select which requirements to
+    consider/satisfy during the stage. This include requirements to
+    avoid risks (as described in \parref{ssec:planning-method}) and
+    requirements to get goals (the outcomes of the project, see
+    \fav).
+\end{description}
+
+\subsubsection{Estimate time}
+\label{sssec:estimate-time}
+This activity has as outcome the stage chronogram: the set of
+activities to carry out throughout the stage and the planned time to
+accomplish these activities. This estimation must be perfomed based on
+previous time measurements. No estimation methodologies or processes
+are imposed.
+
+\subsubsection{Edit stage plan}
+\label{sssec:edit-stage-plan}
+
+\begin{figure*}[th!]
+  \begin{center}
+    \begin{ganttchart}[vgrid, hgrid,
+        y unit title=0.7cm,
+        y unit chart=0.5cm,
+        canvas/.style={draw=none},
+        title/.style={fill=blue!20, draw=none, rounded corners=2mm},
+        title label font=\scriptsize,
+        milestone label font=\scriptsize,
+        group label
+        font={\scriptsize\bfseries\fcolorbox{white}{white}},
+        group label inline anchor/.style={yshift=0pt},
+        bar label font=\scriptsize,
+        bar/.style={rounded corners=2pt, fill=green!20!white},
+        supportbar/.style={rounded corners=2pt, fill=red!20!white},
+        group right shift=0,
+        group top shift=.6,
+        group height=.1,
+        group peaks={}{}{.2}
+        stagex1=3,
+        stagex1 rule/.style={draw=black!64, dash pattern=on 3.5pt off
+          4.5pt, line width=1.5pt}]{26}
+
+      \gantttitle{Stage $x-1$}{3}
+      \gantttitle{Stage $x$}{20}
+      \gantttitle{Stage $x+1$}{3}\\
+
+      \ganttmilestone{\fav $0.x-1$}{2}\\
+
+      \ganttlinkedgroup[name=plan, inline]{Plan}{4}{8}\\
+
+      \ganttbar{Identify requirements}{4}{5}\\
+      \ganttlinkedbar{Estimate time}{6}{6}\\
+      \ganttlinkedbar{Edit stage plan}{7}{8}\\
+
+      \ganttlinkedgroup[name=exe, inline]{Execution}{9}{22}\\
+      \ganttbar{Monitor time}{9}{22}\\
+      \ganttbar{Document}{9}{22}\\
+      \ganttbar{Investigation}{9}{22}\\
+      \ganttbar{Test importations}{9}{10}\\
+      \ganttlinkedbar{Implement}{11}{20}\\
+      \ganttlinkedbar{Test product}{21}{22}\\
+
+      \ganttlinkedmilestone{\fav $0.x$}{22}\\
+    \end{ganttchart}
+
+  \end{center}
+
+  \caption{Development life cycle}
+  \label{fig:life-cycle}
+
+\end{figure*}
 
 \section{Technical issues}
 \subsection{Libraries}
