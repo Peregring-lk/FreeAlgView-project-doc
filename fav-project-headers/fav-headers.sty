@@ -10,6 +10,7 @@
 \usepackage{xspace}
 \usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
 \usepackage{cleveref}
+\usepackage{titlesec}
 
 \newcommand{\crefnames}[3]{
   \@for\next:=#1\do{
@@ -23,6 +24,8 @@
 
 \crefnames{part,section}{\S}{\S\S}
 \crefnames{paragraph}{\P}{\P\P}
+
+\titleformat{\part}{\Huge\bfseries\filcenter}{}{0pt}{}
 
 \newcommand{\fav}{\textit{FreeAlgView}\xspace}
 \newcommand{\parref}[1]{\cref{#1}}
@@ -38,6 +41,7 @@
   \newcommand{\favp}{\fav \proj}
   \newcommand{\favc}{\fav \chart}
   \newcommand{\favpl}{\fav \plan}
+  \newcommand{\favpp}{\textit{favpp}\xspace}
 
   \newcommand{\secref}[1]{(see in \parref{#1})}
 }
@@ -84,8 +88,9 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{tocvsec2}
+\usepackage{xparse} %texlive-latex3
+
 \usepackage{./fav-project-headers/pgfgantt}
-\usepackage{lipsum}
 %% Alias
 \newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
 \newcommand{\pmbok}{PMBOK\rgtrmk GUIDE\xspace}
@@ -114,8 +119,8 @@
   \begin{center}
     \begin{minipage}{0.45\textwidth}
       \begin{description}
-        \newcommand{\conditem}[1]{\item[\scriptsize{#1\thebox@number}]
-          \stepcounter{box@number}\scriptsize{\framebox{\parbox{#2}{##1}}}}
+        \newcommand{\conditem}[1]{\item[{\scriptsize #1\thebox@number}]
+          \stepcounter{box@number}{\scriptsize \framebox{\parbox{#2}{##1}}}}
 }{%
   \setcounter{box@number}{0}
 
@@ -127,26 +132,26 @@
 %% Label enumerate environment
 \newlist{labelist}{enumerate}{5}
 
-\setlist[labelist,1]{label*=\small{\textbf{[\Alph*]}}}
-\setlist[labelist,2]{label=\small{\textbf{[\Alph{labelisti}.\arabic{labelistii}]}}}
-\setlist[labelist,3]{label=\small{\textbf{[\Alph{labelisti}.\arabic{labelistii}.\arabic{labelistiii}]}}}
+\setlist[labelist,1]{label*={\small \textbf{[\Alph*]}}}
+\setlist[labelist,2]{label={\small \textbf{[\Alph{labelisti}.\arabic{labelistii}]}}}
+\setlist[labelist,3]{label={\small \textbf{[\Alph{labelisti}.\arabic{labelistii}.\arabic{labelistiii}]}}}
 
 %% Labeled paragraphs.
 \newcounter{paragraph@number}
 
-\newenvironment{labeledpars}[1]{%
+\DeclareDocumentEnvironment{labeledpars}{O{1}m}{%
 
-  \setcounter{paragraph@number}{0}
+  \setcounter{paragraph@number}{#1}
 
-  \newcommand{\labeledpar}[1]{\stepcounter{paragraph@number}
-    \paragraph{\small{[#1\theparagraph@number]} ##1}}
+  \newcommand{\labeledpar}[1]{
+    \paragraph*{{\small [#2\theparagraph@number]} ##1}\stepcounter{paragraph@number}}
 }{%
   \setcounter{paragraph@number}{0}
 }
 
 %% Label identifier
-\newcommand{\labelid}[1]{\small{\textbf{[#1]}}}
-\newcommand{\mlabelid}[1]{\tiny{\textbf{[#1]}}}
+\newcommand{\labelid}[1]{{\small\textbf{[#1]}}}
+\newcommand{\mlabelid}[1]{{\tiny \textbf{[#1]}}}
 
 %% Timeline environment
 

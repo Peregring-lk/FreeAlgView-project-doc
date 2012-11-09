@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{article}
+\documentclass[twocolumn, 9pt]{extarticle}
 
 \usepackage[english]{./fav-project-headers/fav-headers}
 
@@ -30,7 +30,7 @@ This document has two main purposes:
 \end{itemize}
 
 \subsection{Planning guidance}
-This planning has been guided by the next list of documents:
+This planning has been guided by the following list of documents:
 
 \begin{description}
   \item[\pmbok] This guide is the starting point to planning the
@@ -44,20 +44,6 @@ This planning has been guided by the next list of documents:
 This project and its plans will not strictly adhered to these
 documents. These documents will be used only as general guidance and
 source of knowledge.
-
-%% \subsection{Evolution of the plan}
-%% If there are changes in the project plan, it must to add a history
-%% table at the beginning of this document (just below the
-%% title). Otherwise, that table isn't necessary.
-
-%% It must to add in this table a row for the first version and for each
-%% update. It must to inform in this table about the new version number
-%% and a short description about the changes made. The format of the
-%% version number must be $x.y$, where $x$ denotes version and $y$
-%% subversion. There are no specifications about when it has to made a
-%% change of version or subversion. This depends on the impact of the
-%% changes made. The top row must be the latest updating, and the bottom
-%% row the initial version, in chronological order.
 
 \part{\favpl}
 \label{part:st0-plan}
@@ -250,7 +236,7 @@ risk. Table \numref{tab:rr-matrix} shows this traceability matrix.
     \hline
     \mlabelid{ProjReq4} & \checkmark & & & & & &\\
     \hline
-    \mlabelid{ProjReq5} & & & & \checkmark & & &\\
+    \mlabelid{ProjReq5} & & & & & \checkmark & & \\
     \hline
     \mlabelid{ProjReq6} & \checkmark & & & & & &\\
     \hline
@@ -272,11 +258,11 @@ describes only the development plan.
 The whole work must be divided in stages. Each stage generates a
 subset of the \fav software features and a subset of the \fav
 community features. The last stage generates a final version with all
-of its features and satisfying all requirements and constrains defined
+of its features and meeting all requirements and constrains defined
 in the \favc and in \parref{sssec:prodreq}.
 
 Each stage must identify the features to accomplish, the new risk to
-consider, the requirements to satisfy, and to estimate the neccesary
+consider, the requirements to meet, and to estimate the neccesary
 time to carry out this work. Identification of new risks could imply
 an subsequent investigation in order to identify requirements avoiding
 these risks.
@@ -290,13 +276,14 @@ stage, $0.2$. However, the last stage produces the \fav version
 $1.0$.
 
 \subsubsection{Documentation}
-Each stage must be documented in three forms; other plans could add new
-clauses
-(\parref{sssec:doc-importation-plan,ssec:investigation-plan,ssec:monitoring-plan,ssec:testing-plan}):
+Each stage must be documented in three forms; other plans add new
+related clauses
+(\parref{sssec:documentation-importations,ssec:investigation-plan,ssec:monitoring-plan,ssec:testing-plan}):
 
 \paragraph{Stage plans}
+\label{par:stage-plans}
 Each stage must have its own stage plan. In this stage plan the
-selected features to accomplish and the requirements to satisfy must
+selected features to accomplish and the requirements to meet must
 be enumerated. If new risks are considered, these must be specified in
 the project plan and the risks-requirements matrix
 (\parref{ssec:rr-matrix}) must be properly extended and
@@ -304,12 +291,14 @@ showed. Finally, the stage timeline must be depicted after estimating
 the work time.
 
 \paragraph{Blog}
+\label{par:blog}
 In the project blog, each stage plan must be uploaded and, at the end
 of each stage, each release of a new version (\parref{sssec:release})
 must be announced, with the description of achievements and video
 samples showing the software running.
 
 \paragraph{Software source code repository}
+\label{par:software-source-code-repository}
 In the software source code repository, a new tag registering the new
 version must be inserted. This tag must be well-described with
 information about its actual features and limitations. Within each
@@ -328,6 +317,7 @@ the investigation plan (\parref{ssec:investigation-plan}) and the
 testing plan (\parref{ssec:testing-plan}).
 
 \subsubsection{Imported software requirements}
+\label{sssec:imported-software-requirements}
 All imported software must be libre under GPL-compatible
 licenses and multiplataform. All imported software must have an active
 development and a good documentation. All imported software must be
@@ -335,15 +325,18 @@ selected in order to facilitate the development, and they must be thus
 well studied before importing it in the \fav development.
 
 \subsubsection{Imported software testing}
-\label{sssec:imported-software}
+\label{sssec:imported-software-testing}
 In order to avoid selecting software which can later delay the
 development, a investigation activity must be carried out each time
-that a new library is needed to solve a new implementation problem. Qt
-libraries are free of this testing process, due to the Qt library
-usage is imposed in the \favc.
+that a new library is needed to solve a new implementation problem,
+searching libraries in line with actual needs and meeting the
+described requirements (see above
+\parref{sssec:imported-software-requirements}). Qt libraries are free
+of this testing process, due to the Qt library usage is imposed in the
+\favc.
 
-This testing process must include the creation of ``Hello
-world'' programs\footnote{Short source code files with a minimal
+A posterior testing process must achieved including the creation of
+``Hello world'' programs\footnote{Short source code files with a minimal
   example of use.} using that library, and next, more extense programs
 with examples of use of all features required for this library, in
 order to testing the user-friendliness of the library (that includes if a
@@ -356,8 +349,8 @@ documented to record the usage experience with this library, as well
 as to inform readers about the library and the pros and cons of its
 choice.
 
-\subsubsection{Documentation of software importation}
-\label{sssec:doc-importation-plan}
+\subsubsection{Documentation of importations}
+\label{sssec:documentation-importations}
 For each tested library a entry in the \fav blog must be added in
 order to document the realized work and to record the usage
 experience with this library, as well as to inform readers about the
@@ -365,7 +358,7 @@ library and the pros and cons of its choice.
 
 \subsection{Investigation plan}
 \label{ssec:investigation-plan}
-Each time an important new decision must be taken to satisfy a
+Each time an important new decision must be taken to meet a
 requirement (for example, in order to design a GUI with usability
 features or to implement an algorithm to solve a difficult concrete
 problem), an investigation must be carried out to ensure the quality
@@ -374,7 +367,7 @@ must be added in order to document the realized work and to inform
 readers about adquired knowledge and the decisions made.
 
 Other investigations are described in
-\parref{sssec:stages-definition,sssec:imported-software}.
+\parref{sssec:stages-definition,sssec:imported-software-testing}.
 
 \subsection{Monitoring plan}
 \label{ssec:monitoring-plan}
@@ -415,12 +408,51 @@ cycle.
 phase. Each phase has a group of activities to
 accomplish. This activities are extrated from the aid plans
 (\parref{sec:aid-plans}) and descomposed in tasks. A section is
-dedicated for each identified activity as follows. Only activities
-must be considered to document plannings/chronograms in stage plans.
+dedicated for each identified activity as follows. Tasks are works to
+realize obligatorily and they can be of use for estimations, but only
+activities must be considered to document plannings/chronograms in
+stage plans.
+
+The relationships between aid plans and activities is shown in the
+activities/aid plans traceability matrix. While aid plans classifies
+work in according to its purpose, activities groups work by similarity
+(called more properly tasks). Table \numref{tab:aa-matrix} shows this
+traceability matrx.
+
+\begin{table*}[th!]
+  \caption{Aid plans-activities traceability matrix}
+  \label{tab:aa-matrix}
+  \centering
+  \begin{tabular}{|c||c|c|c|c|c|}
+    \hline
+    & \scriptsize{Development plan} & \scriptsize{Importation plan} & \scriptsize{Implementation plan} &
+    \scriptsize{Monitoring plan} & \scriptsize{Testing plan}\\
+    \hline
+    \scriptsize{Identify requirements} & \checkmark & & & &\\
+    \hline
+    \scriptsize{Estimate time} & \checkmark & & & &\\
+    \hline
+    \scriptsize{Edit stage plan} & \checkmark & & & &\\
+    \hline
+    \scriptsize{Import software} & & \checkmark & & &\\
+    \hline
+    \scriptsize{Develop} & \checkmark & & & &\\
+    \hline
+    \scriptsize{Investigate} & & & \checkmark & &\\
+    \hline
+    \scriptsize{Test product} & & & & & \checkmark\\
+    \hline
+    \scriptsize{Monitor time} & & & & \checkmark &\\
+    \hline
+    \scriptsize{Document} & \checkmark & \checkmark & \checkmark &
+    \checkmark & \checkmark\\
+    \hline
+  \end{tabular}
+\end{table*}
 
 \subsection{Planning phase activities}
 \label{ssec:planning-phase}
-This phase has the next activities:
+This phase has the following activities:
 
 \begin{itemize}
 \item Identify requirements (\parref{sssec:identify-requirements}).
@@ -431,8 +463,8 @@ This phase has the next activities:
 \subsubsection{Identify requirements}
 \label{sssec:identify-requirements}
 This activity involves to establish the requirements (concrete work)
-to accomplish/satisfy throughout the stage. The following tasks
-are identified (described in its natural order):
+to accomplish/meet throughout the stage. The following tasks
+are described (described in its natural order):
 
 \begin{description}
   \item[Select new risks] To select new risks (risks not considered
@@ -441,10 +473,13 @@ are identified (described in its natural order):
     investigate its causes and its solutions in order to choose good
     solutions to these risks.
   \item[Select requirements] To select which requirements to
-    consider/satisfy during the stage. This include requirements to
+    consider/meet during the stage. This include requirements to
     avoid risks (as described in \parref{ssec:planning-method}) and
     requirements to get goals (the outcomes of the project, see
-    \fav).
+    \fav and \parref{sssec:develop}).
+  \item[Design new plans] New risks and its corresponding requirements
+    could need to design additional aid plans to accomplish/meet
+    this requirements.
 \end{description}
 
 \subsubsection{Estimate time}
@@ -453,12 +488,140 @@ This activity has as outcome the stage chronogram: the set of
 activities to carry out throughout the stage and the planned time to
 accomplish these activities. This estimation must be perfomed based on
 previous time measurements. No estimation methodologies or processes
-are imposed.
+are imposed. Descomposition of work in activities/tasks (the purpose
+of this section) could facilitate estimations.
 
 \subsubsection{Edit stage plan}
 \label{sssec:edit-stage-plan}
+This activity groups in one document all information about the work to
+carry out throghout stage, which includes risks, requirements, aid
+plans and estimations.
+
+\subsection{Execution phase activities}
+\label{ssec:execution-phase}
+This phase has the following activities:
+
+\begin{itemize}
+  \item Import software (\parref{sssec:import-software}).
+  \item Develop (\parref{sssec:develop}).
+  \item Investigate (\parref{sssec:investigate}).
+  \item Test product (\parref{sssec:test-product}).
+  \item Monitor time (\parref{sssec:monitor-time}).
+  \item Document (\parref{sssec:document}).
+\end{itemize}
+
+\subsubsection{Import software}
+\label{sssec:import-software}
+This activity performs the work described in the importation plan
+(\parref{ssec:importation-plan}), except to document test
+investigations, moved to the document activity
+(\parref{sssec:document}). The following tasks are described:
+
+\begin{description}
+  \item[Investigate libraries] To investigate the available libraries
+    with the demanded requirements for importations
+    (\parref{sssec:imported-software-requirements}), and to choose the
+    most suitable/s importations.
+  \item[Test libraries] Execution of test as described in
+    the second paragraph of \parref{sssec:imported-software-testing}.
+\end{description}
+
+\subsubsection{Develop}
+\label{sssec:develop}
+This activity is the stage nucleus. This consists of pure development
+to attain the \fav goals: \fav software and its community (see
+\favc). While project requirements are meeting by means of aid
+plans, product requirements are meeted most of them with
+development (aid plans can meet indirectly some product
+requirements). This activity depends on the selected requirements in
+the specific stage in order to descompose its tasks. Descomposing
+tasks in each stage is a key factor for a good stage definition and
+estimation.
+
+\subsubsection{Investigate}
+\label{sssec:investigate}
+This activity contains any investigation task performed in order to
+search development solutions. This activity includes only
+investigation for develop purposes. It excludes
+investigations for searching requirements, testing the product and its
+documentation, considered respectectively in the identify requirements
+(\parref{sssec:identify-requirements}), test product
+(\parref{sssec:test-product}) and document (\parref{sssec:document})
+activities.
+
+\subsubsection{Test product}
+\label{sssec:test-product}
+This activity performs the quality assurance of the product together
+with the investigate activity (\parref{sssec:investigate}). Its work
+is described in the testing plan (\parref{ssec:testing-plan}). The
+documentation of this tests is a tasks moved to the document activity
+(\parref{sssec:document}). The following tasks are described:
+
+\begin{description}
+  \item[Investigate tests] To investigate the most suitable methods to
+    effectively test the product.
+  \item[Design tests] This task consists of designing formally tests
+    as a separate work before its application. Described in
+    \parref{ssec:testing-plan} as a optional work.
+\end{description}
+
+\subsubsection{Monitor time}
+\label{sssec:monitor-time}
+This activity performs the quality improvement of estimation
+throghout stages and the control of the actual realized work. This
+activity comes from the monitoring plan
+(\parref{ssec:monitoring-plan}). It concerns only measuring the
+needed time in the realization of each activity. The documentation of
+this monitoring is moved to the document activity
+(\parref{sssec:document}).
+
+\subsubsection{Document}
+\label{sssec:document}
+This activity joins different documentation tasks scattered over
+different aid plans. The following tasks are described:
+
+\begin{description}
+  \item[Document stage beginnings] To add entries in the \favp blog
+    announcing each new stage and upload in it new stage plans, as
+    described in the documentation plan (\parref{par:blog}).
+  \item[Document importations] To add entries in the \favp blog
+    describing each new importation activity performed
+    (\parref{sssec:import-software}).
+  \item[Document investigations] To add entries in the \favp blog describing
+    each new investigation activity performed (\parref{sssec:investigate}).
+  \item[Document tests] To add entries in the \favp blog describing
+    each new testing activity performed
+    (\parref{sssec:test-product}).
+  \item[Document stage ends] To add entries in the \favp blog
+    announcing the end of each stage, informing about the achieved
+    features in the stage and its monitoring summaries, and to update
+    source code repository with suitable tags, as described in the
+    documentation plan
+    (\parref{par:blog,par:software-source-code-repository}).
+\end{description}
+
+\subsection{Project development life cycle}
+\label{ssec:project-development-life-cycle}
+In summary, a Gantt diagram depicting the nature of the project
+integrating activities and its dependences is shown. The
+representation of execution group of activities is simplified in
+order to facilitate understanding and a better illustration of
+the relations between activities. This execution actitivies are not
+carried out lineally (as shown in the Gantt diagram), but iteratively,
+distributing the whole work in smaller packages achieved
+progressively, each package containing its own monitoring,
+documentation, investigation, importation, development and testing
+activities. The project development life cycle of the \favp, joining
+all this project features (stage division with its planning process
+and its iterative execution process) follows the iterative and
+incremental model of development. Figure \numref{fig:life-cycle}
+depicts the project development life cycle.
 
 \begin{figure*}[th!]
+
+  \caption{Project development life cycle}
+  \label{fig:life-cycle}
+
   \begin{center}
     \begin{ganttchart}[vgrid, hgrid,
         y unit title=0.7cm,
@@ -480,7 +643,6 @@ are imposed.
         stagex1=3,
         stagex1 rule/.style={draw=black!64, dash pattern=on 3.5pt off
           4.5pt, line width=1.5pt}]{26}
-
       \gantttitle{Stage $x-1$}{3}
       \gantttitle{Stage $x$}{20}
       \gantttitle{Stage $x+1$}{3}\\
@@ -496,9 +658,9 @@ are imposed.
       \ganttlinkedgroup[name=exe, inline]{Execution}{9}{22}\\
       \ganttbar{Monitor time}{9}{22}\\
       \ganttbar{Document}{9}{22}\\
-      \ganttbar{Investigation}{9}{22}\\
-      \ganttbar{Test importations}{9}{10}\\
-      \ganttlinkedbar{Implement}{11}{20}\\
+      \ganttbar{Investigate}{9}{22}\\
+      \ganttbar{Import software}{9}{10}\\
+      \ganttlinkedbar{Develop}{11}{20}\\
       \ganttlinkedbar{Test product}{21}{22}\\
 
       \ganttlinkedmilestone{\fav $0.x$}{22}\\
@@ -506,17 +668,12 @@ are imposed.
 
   \end{center}
 
-  \caption{Development life cycle}
-  \label{fig:life-cycle}
-
 \end{figure*}
 
-\section{Technical issues}
-\subsection{Libraries}
-\subsection{Tools}
-
-\part{\favpl stage 1}
+\part[\favpl st. 1]{\favpl \\ stage 1}
 \label{part:st1-plan}
+
+\section{Overview}
 
 \subsection{Purpose}
 The purpose of this document is plan the first stage of the
@@ -528,99 +685,55 @@ described here depends thus on the clauses described in the \favpl
 (see \parref{part:st0-plan}).
 
 \subsection{Deliverables}
-This stage 1 has the next deliverables:
+This stage 1 has the following deliverables:
 
 \begin{description}
 \item[\fav v0.1] To build the \fav version 0.1, that includes to design a
   \fav programming language which manages algorithm working with
-  numeric data types, its operations, functions and recursion and
+  numeric data types, its operations, functions, recursion and
   control flow structures (sequence, iteration and selection
   structures); and to design a default animation for each of this
   language features.
-\item[Documentation] To record this stage and to publish on the
-  Internet this information, that includes the registered time for
-  each realized activity, the features of the achieved version of the
-  \fav and its design.
 \end{description}
 
-\subsection{Selected requirements}
-\subsection{Historial time records}
-
 \section{Work detach}
-\subsection{WBS}
-\subsection{Sequence activities}
+\subsection{Risks, requirements and aid plans}
+The risks selected for this stage are the same selected in the \favpl
+(\parref{part:st0-plan}), except the risk \labelid{B.2.5} due to the
+product requirement \labelid{ProdReq3} is rejected in this stage (see
+table \numref{tab:rr-matrix}). All aid plans defined in the \favpl
+(\parref{sec:aid-plans}) are inherited here without changes.
+
+In respect of the goals described in the \favc, this stage considers
+only the goal \textbf{G0} (extracted from the \favc):
+
+\begin{quote}
+  \textit{To build an application improving algorithm learning by means of
+  graphical animations of the process execution of any algorithm.}
+\end{quote}
+
+From this goal, this stage defines a subset of this features by means
+of the following additional requirements, giving rise the \fav version
+0.1:
+
+\begin{labeledpars}[4]{ProdReq}
+  \labeledpar{\fav language v0.1} \fav v0.1 must have defined a \fav
+  programming language, v0.1, called \favpp\footnote{\fav \textit{plus plus} in
+    honour to \textit{C++}, the development language of \fav.}, which
+  can manage operations with any primitive type (classical types as
+  integers, floats, characters, strings, and so on), functions with
+  any (finite) arity, recursion, and control flow statements (sequence,
+  iteration and selection structures).
+  \labeledpar{GUI} \fav v0.1 must have a GUI by which the user can
+  introduce an algorithm written in \favpp (v0.1) and the application
+  visualices the execution of this algorithms by means of a default
+  (not customizable) animation.
+\end{labeledpars}
+
+\subsection{Activities}
+
 \section{Integrated stage plan}
 
 \section{Summary}
-%% %% Section SLCP
-%% \section{Project life cycle}
-
-%% %% Section managerial process plans
-%% \section{Managerial plans}
-%% \subsection{Planning}
-%% \subsubsection{Estimation plan}
-
-%% \subsection{Executing}
-%% \subsubsection{Work activities}
-%% \subsubsection{Schedule allocation}
-%% \subsubsection{Resource allocation}
-
-%% \subsection{Control and monitoring}
-%% \subsubsection{Schedule control plan}
-%% \subsubsection{Reporting plan}
-%% \subsubsection{Verification and validation plan}
-
-%% \subsection{Risk management plan}
-
-%% \subsection{Closeout plan}
-
-%% % Section technical process plans
-%% \section{Technical plans}
-%% \subsection{Process model}
-%% \subsection{Methods, tools and technics}
-%% \subsubsection{Programming style}
-%% \subsection{Infraestructure plan}
-%% \subsection{Deployment plan}
-
-%% \part{\favpl stage 1}
-%% \label{part:st1-plan}
-
-%% %% Section introduction
-%% \section{Introduction}
-
-%% \subsection{Purpose}
-%% The purpose of this document is plan the first stage of the
-%% \favp.
-
-%% \subsection{Dependences}
-%% This document constitute a extension of the \favpl. The clauses
-%% described here depends thus on the clauses described in the \favpl
-%% (see \parref{part:st0-plan}).
-
-%% \subsection{Deliverables}
-%% This stage 1 has the next deliverables:
-
-%% \begin{description}
-%% \item[\fav v0.1] To build the \fav version 0.1, that includes to design a
-%%   \fav programming language which manages algorithm working with
-%%   numeric data types, its operations, functions and recursion and
-%%   control flow structures (sequence, iteration and selection
-%%   structures); and to design a default animation for each of this
-%%   language features.
-%% \item[Documentation] To record this stage and to publish on the
-%%   Internet this information, that includes the registered time for
-%%   each realized activity, the features of the achieved version of the
-%%   \fav and its design.
-%% \end{description}
-
-%% \section{Managerial process plans}
-%% \subsection{Executing}
-%% \subsubsection{Work activities}
-%% \subsubsection{Schedule allocation}
-%% \subsubsection{Resource allocation}
-
-%% \section{Technical process plans}
-%% \subsection{Process model}
-%% \subsection{Methods, tools and technics}
 
 \end{document}
