@@ -15,6 +15,8 @@
 ]
 
 \tableofcontents
+\listoffigures
+\listoftables
 
 %% Section introduction
 \section{Introduction}
@@ -649,7 +651,7 @@ depicts the project development life cycle.
 
       \ganttmilestone{\fav $0.x-1$}{2}\\
 
-      \ganttlinkedgroup[name=plan, inline]{Plan}{4}{8}\\
+      \ganttlinkedgroup[name=plan, inline]{Planning}{4}{8}\\
 
       \ganttbar{Identify requirements}{4}{5}\\
       \ganttlinkedbar{Estimate time}{6}{6}\\
@@ -660,10 +662,10 @@ depicts the project development life cycle.
       \ganttbar{Document}{9}{22}\\
       \ganttbar{Investigate}{9}{22}\\
       \ganttbar{Import software}{9}{10}\\
-      \ganttlinkedbar{Develop}{11}{20}\\
-      \ganttlinkedbar{Test product}{21}{22}\\
+      \ganttlinkedbar{Develop}{11}{21}\\
+      \ganttlinkedbar{Test product}{22}{23}\\
 
-      \ganttlinkedmilestone{\fav $0.x$}{22}\\
+      \ganttlinkedmilestone{\fav $0.x$}{23}\\
     \end{ganttchart}
 
   \end{center}
@@ -698,6 +700,7 @@ This stage 1 has the following deliverables:
 
 \section{Work detach}
 \subsection{Risks, requirements and aid plans}
+\label{ssec:r-r-aid-plans}
 The risks selected for this stage are the same selected in the \favpl
 (\parref{part:st0-plan}), except the risk \labelid{B.2.5} due to the
 product requirement \labelid{ProdReq3} is rejected in this stage (see
@@ -716,24 +719,274 @@ From this goal, this stage defines a subset of this features by means
 of the following additional requirements, giving rise the \fav version
 0.1:
 
+\def\pronounciationfootnote{%
+    For convenience, the vowel \textit{u} replaces
+    \textit{v} to pronounce \favpp. The valid \favpp pronunciation in
+    English is thus \textit{fau plus plus}
+    (\textipa{[""fa\textsubarch{U}.""pl2s."pl2s]}), while in Spanish they
+    are \textit{fau pe pe} (\textipa{[""f\=*a\textsubarch{u}.""p\|`e."p\|`e]}), \textit{fau plus
+      plus} (\textipa{[""f\=*a\textsubarch{u}.""plus."plus]}) and
+    \textit{fau más más}
+    (\textipa{[""f\=*a\textsubarch{u}.""m\=*as."m\=*as]}).
+}
+
 \begin{labeledpars}[4]{ProdReq}
   \labeledpar{\fav language v0.1} \fav v0.1 must have defined a \fav
-  programming language, v0.1, called \favpp\footnote{\fav \textit{plus plus} in
-    honour to \textit{C++}, the development language of \fav.}, which
+  programming language, called \favpp\twofootnotes{\fav \textit{plus plus} in
+    honour to \textit{C++}, the development language of
+    \fav.}{\pronounciationfootnote} v0.1, which
   can manage operations with any primitive type (classical types as
   integers, floats, characters, strings, and so on), functions with
   any (finite) arity, recursion, and control flow statements (sequence,
   iteration and selection structures).
-  \labeledpar{GUI} \fav v0.1 must have a GUI by which the user can
+  \labeledpar{GUI v0.1} \fav v0.1 must have a GUI by which the user can
   introduce an algorithm written in \favpp (v0.1) and the application
   visualices the execution of this algorithms by means of a default
   (not customizable) animation.
 \end{labeledpars}
 
-\subsection{Activities}
+\subsection{Develop tasks}
+\label{ssec:develop-tasks}
+Two subactivities are identified:
 
-\section{Integrated stage plan}
+\begin{itemize}
+\item Design (\parref{sssec:design}).
+\item Implement (\parref{sssec:implement}).
+\end{itemize}
 
-\section{Summary}
+\subsubsection{Design}
+\label{sssec:design}
+The main objetive of the design subactivity is to design the
+default animation with the requirements described in the risks,
+requirements and aid plans section (\parref{ssec:r-r-aid-plans}). With
+this designed default animation as a starting point, language
+features, GUI, core, etcetera, must be designed. Thus, some tasks are
+identified for this first stage:
+
+\begin{itemize}
+\item Design \fav default animation v0.1.
+\item Design \favpp v0.1.
+\item Design \fav system architecture v0.1.
+\item Design \fav GUI v0.1.
+\item Design \fav system core v0.1.
+\end{itemize}
+
+\subsubsection{Implement}
+\label{sssec:implement}
+This tasks is responsible for implement the designs made in the design
+subactivity. Respectivelly, the next tasks are identified:
+
+\begin{itemize}
+\item Implement \fav system architecture v0.1.
+\item Implement \favpp parser v0.1.
+\item Implement \fav system core v0.1.
+\item Implement \fav default animation v0.1.
+\item Implement \fav GUI v0.1.
+\end{itemize}
+
+\subsection{Investigation tasks}
+\label{ssec:investigation-tasks}
+From the tasks described in the develop tasks section
+(\parref{ssec:develop-tasks}), the investigation activity is divided
+in two analogous tasks:
+
+\begin{description}
+\item[Investigate design issues] Investigations related to get good
+  design decisions.
+\item[Investigate technical issues] Investigations related to solve
+  implementation problems or other technical problems.
+\end{description}
+
+\section{Stage development model}
+\label{sec:stage-development-life-cycle}
+In this section, the \favp stage 1 model of development and its
+temporal planification will be established. The planning phase is
+excluded of this development model due to this document is itself the
+end of the planning phase.
+
+\subsection{Stage model}
+\label{ssec:stage-model}
+The developt activity of this substage is divided in
+four subphases, each one of them aim to meet features in increasing
+complexity order. Subphases and its purposes are the followings:
+
+\begin{description}
+  \item[Subphase 1.1] This subphase aims to implement an default
+    animation of values of algorithms working only with numbers. It
+    exludes animation of operations, recursion, control flow
+    statements or other non-numeric types. In this subphase is also
+    implemented the GUI and the parser for a preliminary version of
+    \favpp. The outcome of this subphase is \fav v0.0.6.
+  \item[Subphase 1.2] This subphase adds to \fav v0.0.6 default
+    animation of operations. Its outcome is \fav v0.0.7.
+  \item[Subphase 1.3] This subphase adds to \fav v0.0.7 values and
+    operations for any primitive type, that includes to increment
+    \favpp to support other primitive types. Its outcome is \fav
+    v0.0.8.
+  \item[Subphase 1.4] This subphase adds to \fav v0.0.8 animation of
+    functions, recursion and control flow statements, that includes to
+    increment \favpp to support functions and recursion. This subphase
+    achieve the requirements defined for this stage
+    (\parref{ssec:r-r-aid-plans}).
+\end{description}
+
+Before subphase 1.1 is the import software activity, in which all
+required libraries for the whole phase must be identified,
+investigated and tested. After subphase 1.3 is the test product
+activity, in which the product must successfully pass all quality
+tests. After completion of this activity, the \favp stage 1 concludes
+and \fav v0.1 is launched.
+
+\subsection{Stage estimation}
+\label{ssec:estimation}
+A 6-weeks term for the stage 1 is proposed. Let us assume \textit{an average}
+of 5-hours per working day, seven days at week. The estimated time taken
+for each activity are thus the followings:
+
+\begin{description}
+\item[Monitor time] This activity take an insignificant time to carry
+  out it. Its estimation time is 0 hours.
+\item[Document] 10 hours.
+\item[Investigate] 60 hours.
+\item[Import software] 10 hours.
+\item[Develop] 120 hours.
+  \begin{description}
+  \item[Design] 20 hours.
+  \item[Implement] 100 hours.
+  \end{description}
+\item[Test product] 10 hours.
+\end{description}
+
+Due to the three first activities are distributed along all the stage,
+to represent milestones it is neccesary to distribute its time along
+the remaining time. Let us assume the document and investigate
+activities begin after the import software activity. Thus, it is
+neccesary to distribute 70 hours (document plus investigate time)
+throughout the remaining 130 hours (develop plus test product
+time): \[ 130 * p = 130 + 70 = 200 \Rightarrow p = \frac{200}{130} =
+1.5385 \] Aplying this expansion coefficient $p$ to develop and test
+product activities, and to round them (as multiples of 5 hours), the
+next measurements are getting:
+
+\begin{description}
+  \item[Develop] $120 * p = 184.65 \Rightarrow 185$ hours.
+    \begin{description}
+      \item[Design] $20 * p = 30.769 \Rightarrow 30$ hours.
+      \item[Implement] $100 * p = 153.85 \Rightarrow 155$ hours.
+    \end{description}
+  \item[Test product] $10 * p = 15.385 \Rightarrow 15$ hours.
+\end{description}
+
+In turn, the develop activity must be distribute in the four subphases
+of this stage (\parref{ssec:stage-model}). Depending of the estimate
+difficulty for each subphase, the following percentages of time for
+each subphase and its repectives times are the followings:
+
+\begin{description}
+\item[Subphase 1.1] 35\% of the develop time: $185 * 0.35 = 64.75
+  \Rightarrow 65$ hours.
+  \begin{description}
+    \item[Design] $30 * 0.35 = 10.5 \Rightarrow 10$ hours.
+    \item[Implement] $155 * 0.35 = 54.25 \Rightarrow 55$ hours.
+  \end{description}
+\item[Subphase 1.2] 25\% of the develop time: $185 * 0.25 = 46.25
+  \Rightarrow 45$ hours.
+  \begin{description}
+    \item[Design] $30 * 0.25 = 7.25 \Rightarrow 5$ hours.
+    \item[Implement] $155 * 0.25 = 38.75 \Rightarrow 40$ hours.
+  \end{description}
+\item[Subphase 1.3] 15\% of the develop time: $185 * 0.15 = 27.75
+  \Rightarrow 25$ hours.
+  \begin{description}
+  \item[Design] $30 * 0.15 = 4.5 \Rightarrow 5$ hours.
+  \item[Implement] $155 * 0.15 = 23.25 \Rightarrow 20$ hours.
+  \end{description}
+\item[Subphase 1.4] 25\% of the develop time, the same percentage as
+  subphase 1.2: 45 hours.
+  \begin{description}
+    \item[Design] 5 hours.
+    \item[Implement] 40 hours.
+  \end{description}
+\end{description}
+
+With this estimations and adjustements, the Gantt diagram with the
+complete timeline and milestones is depicted in the table
+\numref{fig:stage1-life-cycle}.
+
+\begin{figure*}[th!]
+
+  \caption{Stage 1 development life cycle (execution phase)}
+  \label{fig:stage1-life-cycle}
+
+  \begin{leftbar}
+    \begin{center}
+      \begin{ganttchart}[vgrid, hgrid,
+          x unit = 0.34cm,
+          y unit title=0.7cm,
+          y unit chart=0.5cm,
+          link bulge=0.6,
+          canvas/.style={draw=none},
+          title/.style={fill=blue!20, draw=none, rounded corners=2mm},
+          title label font=\scriptsize,
+          milestone label font=\scriptsize,
+          group label
+          font={\scriptsize\bfseries\fcolorbox{white}{white}},
+          group label inline anchor/.style={yshift=0pt},
+          bar label font=\scriptsize,
+          bar/.style={rounded corners=2pt, fill=green!20!white},
+          supportbar/.style={rounded corners=2pt, fill=red!20!white},
+          group right shift=0,
+          group top shift=.6,
+          group height=.1,
+          group peaks={}{}{.2}]{42}
+        \gantttitle{Nov.2012}{19}
+        \gantttitle{Doc.2012}{23}\\
+        \gantttitle{Week 1}{7}
+        \gantttitle{Week 2}{7}
+        \gantttitle{Week 3}{7}
+        \gantttitle{Week 4}{7}
+        \gantttitle{Week 5}{7}
+        \gantttitle{Week 6}{7}\\
+        \gantttitlelist{12,...,30}{1}
+        \gantttitlelist{1,...,23}{1}\\
+
+        \ganttgroup[inline]{Execution}{1}{42}\\
+
+        \ganttbar{Monitor time}{1}{42}\\
+        \ganttbar{Document}{1}{42}\\
+        \ganttbar{Investigate}{1}{42}\\
+        \ganttbar{Import software}{1}{2}\\
+
+        \ganttlinkedgroup[inline]{Develop}{3}{39}\\
+
+        \ganttgroup[inline]{\tiny{Subph. 1.1}}{3}{15}\\
+        \ganttbar{Design}{3}{4}\\
+        \ganttlinkedbar{Implement}{5}{15}\\
+        \ganttlinkedmilestone{\fav 0.0.6}{15}\\
+
+        \ganttlinkedgroup[inline]{\tiny{Subph. 1.2}}{16}{24}\\
+        \ganttbar{Design}{16}{16}\\
+        \ganttlinkedbar{Implement}{17}{24}\\
+        \ganttlinkedmilestone{\fav 0.0.7}{24}\\
+
+        \ganttlinkedgroup[inline]{\tiny{Subph. 1.3}}{25}{30}\\
+        \ganttbar{Design}{25}{25}\\
+        \ganttlinkedbar{Implement}{26}{30}\\
+        \ganttlinkedmilestone{\fav 0.0.8}{30}\\
+
+        \ganttlinkedgroup[inline]{\tiny{Subph. 1.4}}{31}{39}\\
+        \ganttbar{Design}{31}{31}\\
+        \ganttlinkedbar{Implement}{32}{39}\\
+        \ganttlinkedmilestone{\fav 0.0.9}{39}\\
+
+        \ganttlinkedbar{Test product}{40}{42}\\
+        \ganttlinkedmilestone{\fav 0.1}{42}
+      \end{ganttchart}
+
+    \end{center}
+  \end{leftbar}
+\end{figure*}
+
+\licensesection{Aarón Bueno Villares}{2012}
 
 \end{document}

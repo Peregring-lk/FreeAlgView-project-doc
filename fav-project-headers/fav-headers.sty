@@ -8,10 +8,12 @@
 %}
 
 \usepackage{xspace}
-\usepackage[colorlinks=true, linkcolor=blue, urlcolor=blue!60]{hyperref}
+\usepackage[colorlinks=true, linkcolor=blue,
+  urlcolor=blue!60]{hyperref}
 \usepackage{cleveref}
 \usepackage{titlesec}
 
+%% Renaming section cross-references.
 \newcommand{\crefnames}[3]{
   \@for\next:=#1\do{
     \expandafter\crefformat\expandafter{\next}{#2##2##1##3}
@@ -25,9 +27,15 @@
 \crefnames{part,section}{\S}{\S\S}
 \crefnames{paragraph}{\P}{\P\P}
 
+%% Personalice part title format.
 \titleformat{\part}{\Huge\bfseries\filcenter}{}{0pt}{}
 
+%% Footnote for two continuous notes.
+\newcommand{\twofootnotes}[2]{\footnote{#1}$^{,}$\footnote{#2}}
+
+%% Command for languages.
 \newcommand{\fav}{\textit{FreeAlgView}\xspace}
+  \newcommand{\favpp}{\textit{fav++}\xspace}
 \newcommand{\parref}[1]{\cref{#1}}
 \newcommand{\numref}[1]{\#\ref{#1}\xspace}
 
@@ -41,7 +49,6 @@
   \newcommand{\favp}{\fav \proj}
   \newcommand{\favc}{\fav \chart}
   \newcommand{\favpl}{\fav \plan}
-  \newcommand{\favpp}{\textit{favpp}\xspace}
 
   \newcommand{\secref}[1]{(see in \parref{#1})}
 }
@@ -88,9 +95,11 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage{tocvsec2}
+\usepackage{tipa}
 \usepackage{xparse} %texlive-latex3
 
 \usepackage{./fav-project-headers/pgfgantt}
+
 %% Alias
 \newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
 \newcommand{\pmbok}{PMBOK\rgtrmk GUIDE\xspace}
@@ -101,6 +110,13 @@
 
 \newcommand{\licensename}{Creative Commons Attribution-ShareAlike 3.0
   License\xspace}
+
+%% Rename indexes.
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}{Content index}
+  \renewcommand{\listfigurename}{Figure index}
+  \renewcommand{\listtablename}{Table index}
+}
 
 % \licensesection{name}{year}
 \newcommand{\licensesection}[2]{
