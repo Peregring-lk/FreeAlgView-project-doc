@@ -1,4 +1,4 @@
-# makefile
+# README.txt
 
 # Copyright notice:
 # Copyright (C) 2012 Aarón Bueno Villares
@@ -22,23 +22,20 @@
 #  - https://github.com/Peregring-lk/FreeAlgView-project-doc/blob
 #    /master/LICENSE.txt
 
-CHART-EN = project-charter-en.tex
-PLAN-ST1-EN = project-plan-st1-en.tex
+README:
+        FreeAlgView-project-doc
+    ===============================
 
-PDF = pdflatex -file-line-error
+This package contains the LaTeX source code files of the FreeAlgView project
+planning documents. FreeAlgView is a libre and learning-oriented algorithm
+animation application.
 
-charter-en:
-	$(PDF) $(CHART-EN) && $(PDF) $(CHART-EN)
+You can get more information about the project, its evolution and other links
+related to this project and application in the FreeAlgView blog:
 
-plan-st1-en:
-	$(PDF) $(PLAN-ST1-EN) && $(PDF) $(PLAN-ST1-EN)
+   - http://freealgview.blogspot.com
 
-clean:
-	$(RM) *.aux *.toc *.log \
-	*.lof *.lot *.out *.bbl \
-	*.blg *~ *.snm *.nav *\#
-	$(RM) -r auto
+You can get this package (FreeAlgView-project-doc package) in zip and tar.gz
+formats in the next url:
 
-clean-all:
-	make clean
-	$(RM) *.pdf *.dvi
+   - https://github.com/Peregring-lk/FreeAlgView-project-doc/downloads

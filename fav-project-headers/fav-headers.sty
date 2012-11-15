@@ -1,3 +1,37 @@
+%% fav-headers.sty
+
+%% Copyright notice:
+%% Copyright (C) 2012 Tom Bombadil (a tex.stackexchange.com user; see below)
+%% Copyright (C) 2012 Aarón Bueno Villares
+%%
+%% The timeline environment (see or search below: \newenvironment{timeline}) is
+%% based on this work:
+%%
+%%    -http://tex.stackexchange.com/questions/57296/
+%%     how-to-draw-a-series-of-paths-in-a-tikz-chronology-diagram
+%%
+%% and thus, copyrighted by Tom Bombadil (a StackExchange user) under a CC-BY-SA
+%% 3.0 license.
+
+%% Source package notice:
+%% This file is part of the FreeAlgView-project-doc package. You can get this
+%% package in zip and tar.gz formats in the next url:
+%%
+%%  - https://github.com/Peregring-lk/FreeAlgView-project-doc/downloads
+
+%% License notice:
+%% The FreeAlgView-project-doc package is made available under the terms of the
+%% Creative Commons Attribution-ShareAlike 3.0 license or (at your option) any
+%% later version. You can read this license in the next url:
+%%
+%%  - http://creativecommons.org/licenses/by-sa/3.0/
+%%
+%% See also the LICENSE.txt file at the top-level directory of this package or
+%% in the next url:
+%%
+%%  - https://github.com/Peregring-lk/FreeAlgView-project-doc/blob
+%%    /master/LICENSE.txt
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fav-headers}
 
@@ -97,8 +131,7 @@
 \usepackage{tocvsec2}
 \usepackage{tipa}
 \usepackage{xparse} %texlive-latex3
-
-\usepackage{./fav-project-headers/pgfgantt}
+\usepackage{pgfgantt}
 
 %% Alias
 \newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
