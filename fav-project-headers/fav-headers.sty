@@ -36,17 +36,17 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fav-headers}
 
-%\usepackage[english=nohyphenation]{hyphsubst}
+%\RequirePackage[english=nohyphenation]{hyphsubst}
 
 %\DeclareOption*{%
 %  \PassOptionsToPackage{\CurrentOption}{babel}%
 %}
 
-\usepackage{xspace}
-\usepackage[colorlinks=true, linkcolor=blue,
+\RequirePackage{xspace}
+\RequirePackage[colorlinks=true, linkcolor=blue,
   urlcolor=blue!60]{hyperref}
-\usepackage{cleveref}
-\usepackage{titlesec}
+\RequirePackage{cleveref}
+\RequirePackage{titlesec}
 
 %% Renaming section cross-references.
 \newcommand{\crefnames}[3]{
@@ -70,7 +70,8 @@
 
 %% Command for languages.
 \newcommand{\fav}{\textit{FreeAlgView}\xspace}
-  \newcommand{\favpp}{\textit{fav++}\xspace}
+  \newcommand{\faupp}{\textit{faupp}\xspace}
+  \newcommand{\ffaupp}{\textit{Faupp}\xspace}
 \newcommand{\parref}[1]{\cref{#1}}
 \newcommand{\numref}[1]{\#\ref{#1}\xspace}
 
@@ -102,15 +103,31 @@
 %%   \newcommand{\secref}[1]{(véase en \refpar{#1})}
 %% }
 
+\newif\iffullpage@decl
+
+\DeclareOption{fullpage}{\fullpage@decltrue}
+\DeclareOption{nofullpage}{\fullpage@declfalse}
+
+\newif\iflicensec@decl
+
+\DeclareOption{licensec}{\licensec@decltrue}
+\DeclareOption{nolicensec}{\licensec@declfalse}
+
+\ExecuteOptions{fullpage, licensec} % default
+
 \ProcessOptions\relax
 
 %% Provided packages
-\usepackage{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{fullpage}
-\usepackage{nth}
-\usepackage{hyphenat}
-\usepackage{tikz}
+\RequirePackage{babel}
+\RequirePackage[utf8]{inputenc}
+
+\iffullpage@decl
+   \RequirePackage{fullpage}
+\fi
+
+\RequirePackage{nth}
+\RequirePackage{hyphenat}
+\RequirePackage{tikz}
 
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{decorations.pathreplacing}
@@ -120,19 +137,198 @@
 \usetikzlibrary{shadows}
 \usetikzlibrary{trees}
 
-\usepackage{datenumber}
-\usepackage{calc}
-\usepackage{etoolbox}
-\usepackage{multicol}
-\usepackage{framed}
-\usepackage{amssymb}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{enumitem}
-\usepackage{tocvsec2}
-\usepackage{tipa}
-\usepackage{xparse} %texlive-latex3
-\usepackage{pgfgantt}
+\RequirePackage{fav-project-headers/tikz-uml}
+\RequirePackage{tikz-qtree}
+
+\RequirePackage{datenumber}
+\RequirePackage{calc}
+\RequirePackage{etoolbox}
+\RequirePackage{multicol}
+\RequirePackage{framed}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{enumitem}
+\RequirePackage{tocvsec2}
+\RequirePackage{tipa}
+\RequirePackage{xparse} %texlive-latex3
+\RequirePackage{pgfgantt}
+\RequirePackage{listings}
+\RequirePackage{soul}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+
+\lstdefinelanguage{Thue}{%
+  literate={::=}{{\textcolor{blue}{\texttt{::=}}}}3
+           {~}{{\textcolor{red}{\texttt{\~}}}}1
+}
+
+\lstdefinelanguage{faupp}{%
+  morecomment=[s][\color{gray!60!white}]{<}{>},
+  literate=*{[}{{\textcolor{green}{\texttt{[}}}}1
+           {]}{{\textcolor{green}{\texttt{]}}}}1
+           {<-}{{\textcolor{blue}{\texttt{<-}}}}2
+           {->}{{\textcolor{blue}{\texttt{->}}}}2
+           {<:-}{{\textcolor{blue}{\texttt{<:-}}}}3
+           {>}{{\textcolor{blue}{\texttt{>}}}}1
+           {=>}{{\textcolor{blue}{\texttt{=>}}}}2
+           {:}{{\textcolor{red}{\texttt{:}}}}1
+           {>:}{{\textcolor{blue}{\texttt{>:}}}}2,
+  morekeywords={return, if, do, while, else, elseif},
+  keywordstyle=\color{blue!60!red},
+  morecomment=[s][\color{red}]{/*}{*/},
+  escapeinside={(*}{*)}
+}
+
+\lstnewenvironment{Python}{%
+  \lstset{
+    language=Python,
+    gobble=0,
+    stringstyle=\ttfamily,
+    showstringspaces = false,
+    extendedchars=true,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1,
+    basicstyle=\small\ttfamily,
+    morecomment=[l]{//},
+    commentstyle=\color{red},
+    classoffset=0,
+    keywordstyle=\bfseries\color{blue},
+    classoffset=1,
+    morekeywords={nullptr},
+    keywordstyle=\bfseries\color{blue},
+    classoffset=0,
+    stepnumber=1,
+    numbers=left,
+    xleftmargin=5em,
+    xrightmargin=5em,
+    frame=single,
+    framexleftmargin=2.5em,
+    numbersep=15pt,
+    numberstyle=\tiny\textit,
+    numberfirstline = false,
+    breaklines=true,
+    numberblanklines=true,
+  }
+}{}
+
+\lstnewenvironment{Cpp}{%
+  \lstset{
+    language=C++,
+    gobble=0,
+    stringstyle=\ttfamily,
+    showstringspaces = false,
+    basicstyle=\small\ttfamily,
+    morecomment=[l]{//},
+    commentstyle=\color{red},
+    classoffset=0,
+    keywordstyle=\bfseries\color{blue},
+    classoffset=1,
+    morekeywords={nullptr},
+    keywordstyle=\bfseries\color{blue},
+    classoffset=0,
+    stepnumber=1,
+    numbers=left,
+    xleftmargin=1.2em,
+    xrightmargin=0.5em,
+    frame=single,
+    framexleftmargin=1em,
+    numbersep=1pt,
+    numberstyle=\tiny\textit,
+    numberfirstline = false,
+    breaklines=true,
+    numberblanklines=true,
+    escapeinside={(*}{*)}
+  }
+}{}
+
+\lstnewenvironment{Thue}{ %
+  \lstset{
+    language=Thue,
+    gobble=0,
+    frame=single,
+    basicstyle=\small\ttfamily,
+    stepnumber=1,
+    numbers=left,
+    xleftmargin=3em,
+    xrightmargin=2em,
+    frame=single,
+    framexleftmargin=1em,
+    morecomment=[l]{//},
+    commentstyle=\color{red},
+    numbersep=4pt,
+    numberstyle=\tiny\textit,
+    numberfirstline = false,
+    breaklines=true,
+    numberblanklines=true,
+  }
+}{}
+
+\lstnewenvironment{Thue2}{ %
+  \lstset{
+    language=Thue,
+    basicstyle=\small\ttfamily,
+    gobble=0,
+    stepnumber=1,
+    numbers=left,
+    xleftmargin=5em,
+    xrightmargin=5em,
+    frame=single,
+    framexleftmargin=2.5em,
+    morecomment=[l]{//},
+    commentstyle=\color{red},
+    numbersep=15pt,
+    numberstyle=\tiny\textit,
+    numberfirstline = false,
+    breaklines=true,
+    numberblanklines=true,
+  }
+}{}
+
+\lstnewenvironment{Faupp}{ %
+  \lstset{
+    language=faupp,
+    basicstyle=\small\ttfamily,
+    gobble=0,
+    stepnumber=1,
+    numbers=left,
+    xleftmargin=5em,
+    xrightmargin=5em,
+    frame=single,
+    framexleftmargin=2.5em,
+    morecomment=[l]{//},
+    commentstyle=\color{red},
+    numbersep=15pt,
+    numberstyle=\tiny\textit,
+    numberfirstline = false,
+    breaklines=true,
+    numberblanklines=true,
+  }
+}{}
+
+
+\lstnewenvironment{faupp2}{ %
+  \lstset{
+    language=faupp,
+    basicstyle=\small\ttfamily,
+    gobble=0,
+    stepnumber=1,
+    numbers=left,
+    xleftmargin=1.2em,
+    xrightmargin=0.5em,
+    frame=single,
+    framexleftmargin=1em,
+    morecomment=[l]{//},
+    commentstyle=\color{red},
+    numbersep=1pt,
+    numberstyle=\tiny\textit,
+    numberfirstline = false,
+    breaklines=true,
+    numberblanklines=true,
+  }
+}{}
+
+\RequirePackage{abstract}
 
 %% Alias
 \newcommand{\rgtrmk}{\textsuperscript{\textregistered}\xspace}
@@ -154,7 +350,13 @@
 
 % \licensesection{name}{year}
 \newcommand{\licensesection}[2]{
+  \iflicensec@decl
   \section{License}
+  \else
+  \addcontentsline{toc}{section}{License}
+  \section*{License}
+  \fi
+
   This document is \textcopyright #2 #1, under a \licensename:
   \url{http://creativecommons.org/licenses/by-sa/3.0/}.
 }

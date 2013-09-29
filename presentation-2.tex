@@ -1,0 +1,374 @@
+\documentclass[12pt,xcolor=svgnames]{beamer}
+% \documentclass[handout,xcolor=svgnames]{beamer} %Version imprimible
+% -------------------------------------------------------------------
+% Paquetes personalizados
+% Definiciones de color:
+% ============ == =====
+\definecolor{azul}{rgb}{0.2,0.5,0.8}
+\definecolor{azulcian}{rgb}{0.3,0.5,0.7}
+\definecolor{azulleve}{rgb}{0.2, 0.4, 0.6}
+\definecolor{beige}{rgb}{0.6,0.5,0.4}
+\definecolor{burdeos}{rgb}{0.7,0.3,0.5}
+\definecolor{burdeos2}{rgb}{.65,.12,.39}
+\definecolor{gris}{rgb}{0.2,0.2,0.2}
+\definecolor{gnome}{rgb}{0.55,0.3,0}
+\definecolor{hierba}{rgb}{0.5,0.7,0.3}
+\definecolor{marron}{rgb}{0.4,0.3,0.2}
+\definecolor{morado}{rgb}{0.5,0.3,0.5}
+\definecolor{naranja}{rgb}{1,.55,.25}
+\definecolor{rojo}{rgb}{0.5,0,0}
+\definecolor{rojo2}{rgb}{0.7,0,0}
+\definecolor{verde}{rgb}{0.4,0.6,0.2}
+\definecolor{verde2}{rgb}{0.2,0.5,0.2}
+\definecolor{turquesa}{rgb}{0.3,0.7,0.5}
+\definecolor{violeta}{rgb}{.5,0,.50}
+\definecolor{vioscuro}{rgb}{.25,0,.40}
+
+\usepackage{amsfonts}
+\usepackage[spanish]{babel}
+% Paquetes específicos de Beamer
+\usepackage{beamerthemeshadow}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+%\usepackage{ragged2e} -> Justificado
+\usepackage{tikz}
+\usepackage{times}
+\usepackage{listings}
+\usepackage{colortbl}
+\usetikzlibrary{arrows,shapes,snakes}
+
+%---------Listing---------------------------------
+%-- Formato de los listados de código
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     boxpos=c,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framexrightmargin=-3cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     %
+     stringstyle=\ttfamily\color{burdeos},
+     identifierstyle=,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{violeta},
+     keywordstyle=\bfseries,
+   }
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+% estilo de consola
+\lstdefinestyle{consola}
+   {basicstyle=\scriptsize\bf\ttfamily,
+    backgroundcolor=\color{gray75},
+   }
+
+\lstdefinestyle{consola-trans}
+   {basicstyle=\scriptsize\bf\ttfamily,
+   }
+
+%estilo para C
+\lstdefinestyle{C}
+   {language=C,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+     emptylines=2,
+   }
+
+%estilo para C++
+\lstdefinestyle{C++}
+   {language=C++,
+     %
+     breaklines=true,
+     emptylines=2,
+   }
+
+%estilo para Haskell
+\lstdefinestyle{haskell}
+   {language=Haskell,
+     %
+     breaklines=true,
+     emptylines=2,
+   }
+
+\mode<presentation>
+{
+\usefonttheme{structuresmallcapsserif}
+%\useoutertheme{shadow}
+% -------------------------------------------------------------------
+% Elección del tema Beamer
+% -------------------------------------------------------------------
+% Más llamativos:
+% === ==========
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Frankfurt}
+%\usetheme{Ilmenau}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+% -------------------------------------------------------------------
+% Menos llamativos:
+% ===== ==========
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{boxes}
+\usetheme{CambridgeUS}
+%\usetheme{Dresden}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme[height=7mm]{Singapore}
+% --------------------------------------------------------------------
+%%\useinnertheme{rounded}
+%%\setbeamercovered{transparent}
+}
+% --------------------------------------------------------------------
+% Esquema de color:
+% ======= == =====
+%\usecolortheme{albatross}
+%\usecolortheme{default}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily} % SOI/SOII
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seahorse}
+%\usecolortheme{seagull}
+%\usecolortheme{sidebartab}
+%\usecolortheme{wolverine}
+%\usecolortheme[named=yellow]{structure}
+%\usecolortheme[named=purple]{structure}
+%\usecolortheme[named=blue]{structure}
+%\usecolortheme[named=rojo]{structure}
+%\usecolortheme[named=gnome]{structure}
+\usecolortheme[named=rojo]{structure}
+% --------------------------------------------------------------------
+%\hypersetup{colorlinks=true,%
+%    linkcolor=rojo2,%
+%    citecolor=rojo,%
+%    filecolor=rojo,%
+%    menucolor=rojo,%
+%    pagecolor=rojo,%
+%    urlcolor=rojo}
+% --------------------------------------------------------------------
+% Color del tema:
+% ===== === ====
+%\usecolortheme[named=DarkBlue]{structure}
+% --------------------------------------------------------------------
+% Modificación del fondo
+%\usepackage{fondo}
+% --------------------------------------------------------------------
+% Definición de comportamiento en cada nueva subsección:
+%  -> Título en función de sección y subsección
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+   \frametitle{Table of contents}
+   \transdissolve
+   \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+   \frametitle{Table of contents}
+   \transdissolve
+   \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+% --------------------------------------------------------------------
+% Márgenes laterales (adecuación con el fondo)
+%%\setbeamersize{text margin left=1.2cm, text margin right=1.2cm}
+% Cambiar márgenes
+\newenvironment{cambiarmargen}[2]{%
+ \begin{list}{}{%
+  \setlength{\topsep}{0pt}%
+  \setlength{\leftmargin}{#1}%
+  \setlength{\rightmargin}{#2}%
+  \setlength{\listparindent}{\parindent}%
+  \setlength{\itemindent}{\parindent}%
+		  \setlength{\parsep}{\parskip}%
+		  }%
+ \item[]}{\end{list}}
+% --------------------------------------------------------------------n
+
+% Info
+% ====
+\title[FreeAlgView]{FreeAlgView}
+\author[Aarón Bueno]{Aarón Bueno Villares\\$<$abv150ci@gmail.com$>$}
+\institute[UCA \& FHWS]{\textit{Universidad de Cádiz} \\ \textit{Hochschule für
+    angewandte Wissenchaften Würzburg-Scheweinfurt}}
+\subject{Final degree project}
+\date{September 2013}
+% -------------------------------------------------------------------
+% Directorio de imágenes
+\graphicspath{{./images/}}
+% -------------------------------------------------------------------
+% \setbeamersize{text margin left=1.6em,text margin right=1.6em}
+
+% Comienza el documento
+\begin{document}
+% Tikz -> Imágenes
+\tikzstyle{every picture}+=[remember picture]
+% Entorno matemático
+\everymath{\displaystyle}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Table of contents}
+  \transdissolve
+  \tableofcontents
+\end{frame}
+
+\section{Difficulties}
+
+\begin{frame}{Difficulties}
+  \begin{block}{Algorithm versus animations}
+    \begin{itemize}
+    \item Animation ``depicts'' the semantic of an algorithm.
+    \item An algorithm is executed over a machine.
+    \item The imposibility of automatically ``extract'' the semantic.
+    \item Objective: comfortable way to comunicate the ``machine'' with the
+      ``algorithm''.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Ideas}
+
+\begin{frame}{Original approach: two languages}
+  \begin{block}{Problem}
+    \begin{itemize}
+    \item Two languages: one to write algorithms, another to write animations.
+    \item Descriptive languages are not powerfull enough.
+    \item So, I need two languages.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Only one language}
+      \begin{center}
+        Maintain and develop two programming languages is stupid.
+        Problem: Where is the line between animation and language?
+      \end{center}
+  \end{block}
+\end{frame}
+
+\section{Solution: faupp}
+
+\begin{frame}{Language features}
+  \begin{block}{Emacs inspired}
+    \begin{itemize}
+      \item Emacs versus emacs-lisp: GUI versus machine.
+      \item Faupp also.
+      \item High introspective language.
+      \item ``Read'' plus ``draw'' the machine's state.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Graphic (designed) features}
+    \begin{itemize}
+    \item Graphic primitives and events.
+    \item Struture (in the machine itself) to maintain the GUI state.
+    \item Also, to maintain the actions.
+    \item But, how is the language itself?
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Inspirating languages}
+
+  \begin{block}{C++}
+    \begin{itemize}
+      \item C/C++ are strongly typed.
+      \item Good to improve security.
+      \item A little troublesome.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Prototype-based languages}
+    \begin{itemize}
+    \item Languages where inheritance and composition are the same.
+    \item It doesn't distinguish ``type'' and ``object''.
+    \item If $a \in b \rightarrow b$ has type $a$.
+    \item Objects define types themselves.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Faupp: all together}
+
+  \begin{block}{How does it look like?}
+    \begin{center}
+      Any examples: type and marks. Function-objects. Overloads with
+      context. Tree structure for solving: ``instrospection''.
+    \end{center}
+  \end{block}
+
+  \pause
+
+  \begin{block}{The node world}
+    \begin{itemize}
+      \item Inheritance versus references (semi-graph).
+      \item Movements.
+      \item Address.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\section{Implementation details}
+
+\begin{frame}{Implementations details}
+  \begin{block}{In searching of optimization}
+    \begin{itemize}
+    \item Shared objects (static pool).
+    \item In-place construction.
+    \item Copy-on-write.
+    \end{itemize}
+  \end{block}
+
+  \pause
+
+  \begin{block}{Other idioms}
+    \begin{itemize}
+    \item pImpl idiom.
+    \item ``movement'' problem.
+    \item ``is\_incongruent''.
+    \item Erasure (henfo).
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\end{document}
